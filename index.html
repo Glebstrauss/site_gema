@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEMA — Grupo de Estudos em Melhoramento Animal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --azul:#1C4EDD;--azul-escuro:#0f2e8a;--azul-claro:#e8edfb;--azul-mid:#5578e8;
+  --preto:#0d0d0d;--cinza:#555;--cinza-claro:#f5f5f3;--branco:#fff;--borda:rgba(28,78,221,0.12)
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--branco);color:var(--preto);line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:68px;background:rgba(255,255,255,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--borda)}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.nav-logo svg{height:38px;width:auto}
+.nav-logo-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--azul-escuro);letter-spacing:.02em;line-height:1.1}
+.nav-logo-sub{font-size:.58rem;font-weight:300;color:var(--cinza);letter-spacing:.06em;text-transform:uppercase;display:block}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;font-size:.875rem;font-weight:400;color:var(--cinza);transition:color .2s}
+.nav-links a:hover{color:var(--azul)}
+#inicio{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:8rem 3rem 4rem;max-width:1200px;margin:0 auto}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--azul);border:1px solid rgba(28,78,221,0.25);padding:.35rem .9rem;border-radius:100px;margin-bottom:1.5rem}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--azul);flex-shrink:0}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.6rem);line-height:1.1;font-weight:600;color:var(--preto);margin-bottom:1.25rem}
+.hero-title em{color:var(--azul);font-style:normal}
+.hero-sub{font-size:1.05rem;font-weight:300;color:var(--cinza);max-width:480px;margin-bottom:2.5rem;line-height:1.8}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{display:inline-flex;align-items:center;gap:.45rem;background:var(--azul);color:#fff;text-decoration:none;padding:.8rem 1.75rem;border-radius:100px;font-size:.9rem;font-weight:500;transition:background .2s,transform .15s}
+.btn-primary:hover{background:var(--azul-escuro);transform:translateY(-1px)}
+.btn-outline{display:inline-flex;align-items:center;gap:.45rem;border:1px solid rgba(28,78,221,0.3);color:var(--azul);text-decoration:none;padding:.8rem 1.75rem;border-radius:100px;font-size:.9rem;font-weight:400;transition:border-color .2s,background .2s}
+.btn-outline:hover{border-color:var(--azul);background:var(--azul-claro)}
+.hero-stats{display:flex;gap:2.5rem}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:600;color:var(--azul)}
+.stat-label{font-size:.78rem;color:var(--cinza);margin-top:.1rem}
+.hero-visual{display:flex;justify-content:center;align-items:center;position:relative}
+.hero-logo-wrap{position:relative;width:100%;max-width:500px}
+.hero-logo-wrap::before{content:'';position:absolute;inset:-24px;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(28,78,221,.07) 0%,transparent 70%);border-radius:50%}
+.hero-logo-svg{width:100%;height:auto;position:relative;z-index:1;filter:drop-shadow(0 4px 32px rgba(28,78,221,.1))}
+.hero-dots{position:absolute;top:-16px;right:-16px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;opacity:.2}
+.hero-dots span{width:4px;height:4px;border-radius:50%;background:var(--azul);display:block}
+section{padding:6rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--azul);margin-bottom:.6rem}
+.divider{width:36px;height:2px;background:var(--azul);margin-bottom:1.25rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,2.5vw,2.4rem);font-weight:600;line-height:1.2;color:var(--preto);margin-bottom:.9rem}
+.section-desc{font-size:1rem;color:var(--cinza);max-width:520px;line-height:1.8;margin-bottom:2.75rem}
+#professores{background:var(--cinza-claro)}
+.prof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.25rem}
+.prof-card{background:var(--branco);border:1px solid var(--borda);border-radius:16px;padding:1.75rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.prof-card:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(28,78,221,.09)}
+.prof-card::after{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--azul);opacity:0;transition:opacity .2s}
+.prof-card:hover::after{opacity:1}
+.prof-avatar{width:52px;height:52px;border-radius:50%;background:var(--azul-claro);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--azul);margin-bottom:1rem}
+.prof-nome{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--preto);margin-bottom:.25rem}
+.prof-cargo{font-size:.75rem;color:var(--azul);font-weight:500;letter-spacing:.04em;margin-bottom:.7rem;text-transform:uppercase}
+.prof-desc{font-size:.875rem;color:var(--cinza);line-height:1.65;margin-bottom:1rem}
+.prof-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-size:.7rem;padding:.22rem .6rem;border-radius:100px;background:var(--azul-claro);color:var(--azul-escuro);font-weight:500}
+#publicacoes{background:var(--branco)}
+.pub-list{display:flex;flex-direction:column}
+.pub-item{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem 1.25rem;border-bottom:1px solid rgba(28,78,221,.08);transition:background .15s;border-radius:8px}
+.pub-item:first-child{border-top:1px solid rgba(28,78,221,.08)}
+.pub-item:hover{background:var(--azul-claro)}
+.pub-year{min-width:48px;font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--azul);padding-top:.1rem}
+.pub-body{flex:1}
+.pub-title{font-size:.95rem;font-weight:500;color:var(--preto);margin-bottom:.3rem;line-height:1.5}
+.pub-authors{font-size:.82rem;color:var(--cinza);margin-bottom:.35rem;font-style:italic}
+.pub-journal{font-size:.82rem;color:var(--azul);font-weight:500}
+.pub-badge{display:inline-block;font-size:.68rem;padding:.18rem .55rem;border-radius:100px;font-weight:500;margin-left:.5rem;background:var(--azul-claro);color:var(--azul-escuro)}
+.pub-doi{display:inline-flex;align-items:center;gap:.3rem;text-decoration:none;font-size:.75rem;color:var(--cinza);border:1px solid var(--borda);padding:.18rem .55rem;border-radius:100px;margin-top:.5rem;transition:color .2s,border-color .2s}
+.pub-doi:hover{color:var(--azul);border-color:var(--azul)}
+#premios{background:var(--preto)}
+#premios .section-label{color:var(--azul-mid)}
+#premios .section-title{color:var(--branco)}
+#premios .section-desc{color:rgba(255,255,255,.5)}
+#premios .divider{background:var(--azul-mid)}
+.premio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem}
+.premio-card{border:1px solid rgba(28,78,221,.3);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:border-color .2s,background .2s}
+.premio-card:hover{border-color:var(--azul-mid);background:rgba(28,78,221,.08)}
+.premio-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--azul),var(--azul-mid))}
+.premio-topo{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem}
+.premio-icon{font-size:1.6rem}
+.premio-ano{font-size:.72rem;color:rgba(255,255,255,.4);padding-top:.2rem}
+.premio-nome{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--branco);margin-bottom:.35rem}
+.premio-entidade{font-size:.78rem;color:var(--azul-mid);font-weight:500;margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.04em}
+.premio-desc{font-size:.875rem;color:rgba(255,255,255,.5);line-height:1.65}
+#noticias{background:var(--branco)}
+.noticias-grid{display:grid;grid-template-columns:3fr 2fr;gap:1.25rem}
+.noticia-destaque{background:var(--azul);border-radius:16px;padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;position:relative;overflow:hidden}
+.noticia-destaque::after{content:'GEMA';position:absolute;right:-8px;bottom:-24px;font-family:'Playfair Display',serif;font-size:7rem;font-weight:600;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;user-select:none}
+.noticia-data{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.nd-data{color:rgba(255,255,255,.6);margin-bottom:.75rem}
+.noticia-titulo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--branco);margin-bottom:.75rem;line-height:1.3}
+.noticia-texto{font-size:.9rem;line-height:1.7;color:rgba(255,255,255,.75);margin-bottom:1.5rem;flex:1}
+.noticia-link-btn{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.15);color:#fff;text-decoration:none;padding:.65rem 1.25rem;border-radius:100px;font-size:.85rem;font-weight:500;width:fit-content;border:1px solid rgba(255,255,255,.25);transition:background .2s}
+.noticia-link-btn:hover{background:rgba(255,255,255,.25)}
+.noticias-lista{display:flex;flex-direction:column;gap:1rem}
+.noticia-mini{border:1px solid var(--borda);border-radius:12px;padding:1.25rem 1.5rem;transition:border-color .2s,background .2s;cursor:pointer;flex:1}
+.noticia-mini:hover{border-color:rgba(28,78,221,.4);background:var(--azul-claro)}
+.nm-data{color:var(--azul);margin-bottom:.4rem}
+.nm-titulo{font-size:.9rem;font-weight:500;color:var(--preto);line-height:1.4}
+.linha-deco{padding:1.5rem 0;overflow:hidden;background:var(--azul-claro);border-top:1px solid var(--borda);border-bottom:1px solid var(--borda)}
+.linha-inner{display:flex;gap:3rem;align-items:center;animation:slide 22s linear infinite;white-space:nowrap;width:max-content}
+.linha-item{font-size:.8rem;font-weight:500;color:var(--azul);letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.linha-dot{width:4px;height:4px;border-radius:50%;background:var(--azul);opacity:.3;flex-shrink:0}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+footer{background:var(--preto);padding:4.5rem 3rem 2rem}
+.footer-top{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem}
+.footer-logo-svg{height:44px;width:auto;margin-bottom:1rem}
+.footer-tagline{font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.7}
+.footer-col-title{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:1rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{text-decoration:none;font-size:.875rem;color:rgba(255,255,255,.4);transition:color .2s}
+.footer-links a:hover{color:var(--azul-mid)}
+.footer-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.25)}
+.footer-bottom a{color:var(--azul-mid);text-decoration:none}
+@media(max-width:900px){
+  #inicio{grid-template-columns:1fr;gap:2rem;text-align:center}
+  .hero-visual{order:-1}
+  .hero-logo-wrap{max-width:300px}
+  .hero-sub,.hero-stats{max-width:100%}
+  .hero-actions,.hero-stats{justify-content:center}
+  .noticias-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;gap:.5rem}
+}
+@media(max-width:600px){
+  nav{padding:0 1.25rem}
+  .nav-links{display:none}
+  section{padding:4rem 1.25rem}
+  #inicio{padding:7rem 1.25rem 3rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#inicio" class="nav-logo">
+    <svg viewBox="0 0 560 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M111 163C114 157 116 155 117 156C117.3 157 117.4 158 117.3 160C117.2 162 117.3 162 117.6 162C117.9 162 119 161.5 120 161.2C120.5 161 121.1 160.7 121.8 160.5V160.7C121.8 162.6 122.2 164.5 122.9 166.3C122.8 166.3 122.8 166.4 122.7 166.4C121.9 166.7 121 167 120.5 167.3C120 167.5 118.9 168 118 168.3C115.4 169.3 114.5 169.9 113.8 171C113.5 171.6 113 172.2 112.9 172.4C112.7 172.6 111.6 174.1 110.4 175.7C109.2 177.3 108 178.7 107.8 178.7C107.5 178.7 107.5 178.75 107.7 178.9C108 179.05 107.9 179.3 107.4 179.8C107 180.2 106.7 180.6 106.7 180.7C106.7 181.1 103.6 184.4 99.5 188.4C97.2 190.6 94.7 193.1 94 193.8C92.8 195 90.7 196.5 86.4 199.4C84.1 201 84.5 200.3 82.2 206.5C81.9 207.5 81.5 208.4 81.5 208.6C81.5 208.8 80.3 209.2 79.5 210.7C79.2 211.4 78.9 212 78.8 212.3C78.6 213.1 77.6 214.2 77.2 215.1C76.8 215.9 76.5 216.8 76.5 217.1C76.5 217.4 76.4 217.7 76.2 217.9C76.1 218 75.5 219.4 74.8 220.9C72.8 225.4 72.3 226.5 69.9 231.1C64.5 241.9 63.3 243.5 61.2 243C59.9 242.7 59.5 242.3 59.1 241.2C58.8 240.2 59.1 239.5 62 234.7C64 231.5 64.6 230.3 66.8 225.3C67.1 224.5 67.7 223.1 68.2 222C68.6 221 69.2 219.6 69.4 218.8C69.6 218.1 69.9 217.4 70.1 217.2C70.3 216.9 71 215.3 71.6 213.5C72.3 211.7 72.9 210 73 209.7C73.5 208.3 74 206.9 75 203.9C76.7 198.8 76.8 198.6 80.2 196.4C83.1 194.4 86.8 191.6 88.7 189.8C91.6 187 97.2 181.5 98.2 180.3C100.3 177.8 100.6 177.4 101.9 175.6C102.6 174.6 103.6 173.3 104 172.8C104.4 172.2 104.8 171.6 104.8 171.5C104.8 171.4 105.4 170.4 106.1 169.3C106.8 168.2 107.9 166.3 108.5 165.1C109.2 163.8 110.2 162.1 110.8 160.9C111.4 159.7 112.3 157.9 112.9 156.9L111 163ZM130.6 0.05C130.8-0.12 137.9 0.07 139.4 0.32C140.2 0.45 142.3 0.81 144.2 1.12C148.5 1.85 148.2 1.78 150.9 2.8C152.2 3.28 153.6 3.75 154 3.83C154.4 3.91 156.3 4.73 158.3 5.65C160.1 6.57 161.9 7.27 161.9 7.27C162.2 7.27 165.8 9.33 166.4 9.81C166.8 10.08 167.9 10.86 169.1 11.55C170.2 12.23 171.2 12.93 171.2 13.07C171.2 13.22 171.5 13.41 171.9 13.5C172.5 13.64 176.9 17.2 178.3 18.51C178.5 18.72 179.5 19.67 180.6 20.67C183.2 23.25 185.9 26.95 188.3 31.08C188.9 31.93 189.6 32.61 190.5 33.04C193.4 34.49 198.2 36.76 199.3 37.17C200.8 37.78 203.7 39.38 206.5 41.08C211.3 43.98 212.9 44.97 213.3 45.25C213.6 45.41 214.5 45.98 215.5 46.53C219.3 49.24 223.9 52.44 225.4 53.67C227.7 55.63 230 58.7 230 60.04C230 62.09 227.8 64.96 225.8 65.58C224.6 65.96 218.2 65.89 216.5 65.47C215.4 65.19 212.9 64.79 211.6 64.65C210.9 64.58 209.4 64.38 208.2 64.21C203.3 63.52 198.8 63.4 198.5 63.98C198 64.82 196.2 69.62 195 72.87C194.3 74.95 193.6 76.9 193.5 77.22C193.1 78.14 192.1 80.98 191.9 81.77C191.8 82.16 191.5 83.51 191.2 84.78C190.9 86.05 190.6 87.37 190.6 87.63C190.6 87.89 190.5 88.45 190.3 88.9C190.1 89.34 189.9 90 189.9 90.38C189.7 92.3 188.9 97.72 188.6 98.84C188.5 99.52 188.3 101.06 188.2 102.27L188 104.56L188.8 104.28C189.6 104 193.7 102.74 197.5 101.59C198.9 101.2 200.3 100.77 200.7 100.64C201 100.51 202.5 100.14 203.8 99.79C205.1 99.45 206.6 99.01 207.3 98.82C207.9 98.63 209.1 98.32 209.8 98.14C210.6 97.94 211.9 97.84 213.1 97.9C215 97.98 215.6 98.14 217.2 99.04C218.3 99.61 219.5 100.42 220 100.83C220.6 101.24 222.1 102.3 223.7 103.2C226.2 104.79 227.7 105.7 229.3 106.72C227.8 108 226.7 109.5 225.9 111.1C225.4 110.82 225 110.51 224.5 110.22C222.1 108.68 219.9 107.15 219.2 106.62C218.9 106.38 218.6 106.19 218.5 106.19C218.5 106.19 217.4 105.57 216.2 104.83C212.9 102.68 212.5 102.7 203.7 105.54C202.6 105.89 200.9 106.47 199.8 106.81C198.6 107.15 197.5 107.54 197.4 107.67C197.2 107.8 196.8 107.91 196.5 107.91C196.2 107.91 195.7 108 195.6 108.11C195.4 108.21 193.9 108.77 192 109.32C189.7 110 188.4 110.54 188.7 110.71C189.3 111 197.8 113.45 198.4 113.44C198.7 113.44 199.6 113.63 200.4 113.86C201.2 114.08 203 114.53 204.6 114.86C208 115.61 209.9 116.2 210.2 116.61C210.3 116.78 210.4 116.82 210.4 116.69C210.4 116.13 215.7 122.38 216.6 123.87C216.8 124.32 217.7 125.36 218.6 126.23C222.3 130.07 223.5 131.41 224.9 133.11C225.7 134.07 226.8 135.34 227.3 135.85C227.9 136.36 228.9 137.61 229.7 138.65C230.5 139.69 232 141.75 233.1 143.24C233.4 143.65 233.7 144.08 234 144.5C231.7 144.47 229.3 144.64 228.9 144.44C228.2 144.17 227.8 146.08 225.1 142.26C224.2 141.04 222.5 138.99 221 137.21C220 136.2 219.3 135.26 219.3 135.12C219.3 134.9 215.7 131.11 213.7 129.21C213.2 128.78 212.8 128.32 212.8 128.2C212.8 127.96 212.5 127.78 212.2 127.7C211.9 127.61 211.6 127.34 211.6 127.09C211.6 126.84 211.4 126.64 211.2 126.64C211.1 126.64 210.5 126.34 209.9 125.98C209.1 125.4 208.8 125.32 206.3 125.29C204.8 125.27 202.1 125.14 200.4 125C198.7 124.87 196 124.74 194.3 124.71C192.5 124.69 190.3 124.57 189.3 124.46C188.2 124.34 185.1 124.17 182.3 124.07C177.6 123.89 175.4 123.76 175.4 123.65C175.4 123.63 174.9 123.56 174.4 123.49C173.8 123.42 173.1 123.25 172.7 123.09C171.9 122.72 171.2 122.77 170 123.35C168.2 122.19 166.1 121.2 163.8 120.38L163.9 120.34C164.6 120.14 165.7 119.68 166.3 119.33C167.4 118.7 167.4 118.61 167.3 117.55C167.1 116.29 167.6 114.91 168.4 114.5C169.2 114.08 170.6 114.17 171.1 114.69C171.3 114.93 172.6 115.82 174 116.67C176.1 117.97 176.9 118.28 178.3 118.45C179.3 118.56 180.2 118.69 180.4 118.74C181.2 118.89 186 119.2 189.5 119.33C191.4 119.4 195.5 119.57 198.5 119.72C201.5 119.87 203.9 119.93 204 119.86C204.1 119.79 203.9 119.73 203.6 119.73C203.3 119.73 201.9 119.47 200.5 119.14C199.1 118.81 197.2 118.43 196.4 118.27C194.9 117.97 190.2 116.64 188.9 116.12C188.5 115.97 187.2 115.57 186 115.25C182.6 114.21 179.8 112.92 179.1 112.1C178.3 111.15 178.3 109.38 179.2 106.53C179.5 105.34 179.9 103.92 179.9 103.59C180 103.09 180.1 102.88 180.2 102.39C180.3 101.9 180.5 101.43 180.6 101.2C180.7 100.97 180.8 100.45 180.8 100.19C180.9 99.42 181.2 97.94 181.5 97.36C181.8 96.78 182 95.96 182.1 95.5C182.2 94.67 182.3 94.06 183.7 90.55C184.4 88.69 185 86.84 185.4 86.42C185.8 86 186.5 83.67 186.5 82.17C186.5 81.58 186.4 81.03 186.6 80.98C190.1 80.34 190.1 80.07 190.3 79.51C191 78.02 190.2 78.12 187.6 74.81C185.8 72.49 181.1 68.24 179 67.1C178.8 66.95 177.4 66.15 176 65.34C174.6 64.52 172.9 63.58 172.2 63.27C171.4 62.97 170.4 62.5 169.9 62.21C169.3 61.93 168.1 61.31 166.9 60.83C165.7 60.36 164.3 59.79 163.8 59.58C162.4 58.97 159.8 58.24 158.2 58.03C157.3 57.91 156.1 57.68 155.3 57.51C152.9 56.93 145.6 56.68 142.9 57.07C142.3 57.15 141 57.33 140 57.47C138.9 57.61 137.5 57.88 137 58.04C136.3 58.2 135.4 58.4 134.8 58.47C134.2 58.54 132.9 58.93 131.9 59.34C126.5 61.67 126 61.98 120.1 65.82C118.8 66.71 117.5 67.66 117.1 67.96C116.7 68.26 115.7 68.96 115 69.52C114.2 70.08 113.4 70.52 113.2 70.52C112.6 70.52 110.2 72.53 106.7 75.86C101.9 80.39 101.9 80.36 101.1 79.65C100.7 79.21 100.6 78.86 100.7 78.31C101 77.12 102.1 74.62 103 73.22C104.1 71.32 107.6 68 110.3 66.28C112.5 64.83 117.6 61.81 118 61.81C118.1 61.81 119.3 61.3 120.7 60.68C125.6 58.38 126.5 58.09 130.5 57.19C131.2 57.03 132.1 56.77 132.6 56.62C132.9 56.47 133.7 56.27 134.2 56.2C134.8 56.13 136 55.92 136.9 55.74C137.9 55.56 139.7 55.35 140.9 55.26C142.2 55.16 143.5 55.03 143.7 54.97C143.7 54.97 144.9 54.93 130.6 0.05Z" fill="#1C4EDD"/>
+      <path d="M229.5 109C234.8 112.4 252 122.5 263 120C263 120 290 115 290 108" stroke="#1C4EDD" stroke-width="5.5" stroke-linecap="round"/>
+      <text x="300" y="95" font-family="Georgia,serif" font-size="110" font-weight="600" fill="#0d0d0d">GEMA</text>
+      <text x="302" y="135" font-family="Arial,sans-serif" font-size="22" font-weight="400" fill="#888" letter-spacing="4">EMVZ · UFBA</text>
+    </svg>
+    <span>
+      <span class="nav-logo-name">GEMA</span>
+      <span class="nav-logo-sub">EMVZ · UFBA</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#professores">Professores</a></li>
+    <li><a href="#publicacoes">Publicações</a></li>
+    <li><a href="#premios">Prêmios</a></li>
+    <li><a href="#noticias">Notícias</a></li>
+  </ul>
+</nav>
+
+<div style="max-width:1200px;margin:0 auto">
+<section id="inicio" style="display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:8rem 3rem 4rem;min-height:100vh">
+  <div>
+    <div class="hero-tag">EMVZ · UFBA · Salvador, BA</div>
+    <h1 class="hero-title">Genética &amp;<br><em>Melhoramento</em><br>Animal Aplicados</h1>
+    <p class="hero-sub">Grupo de pesquisa dedicado à genética quantitativa, avaliação genômica e conservação de raças de equídeos brasileiros.</p>
+    <div class="hero-actions">
+      <a href="#publicacoes" class="btn-primary">Ver publicações →</a>
+      <a href="https://glebstrauss.github.io/gema/" target="_blank" class="btn-outline">Curso aberto ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">12+</div><div class="stat-label">Publicações</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">Linhas de pesquisa</div></div>
+      <div><div class="stat-num">2+</div><div class="stat-label">Prêmios</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-logo-wrap">
+      <div class="hero-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <svg class="hero-logo-svg" viewBox="0 0 2081 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M332.868 731.8C349.585 699.708 358.222 689.882 363.501 696.952C365.111 699.106 365.511 702.836 365.098 711.863C364.623 722.305 364.848 723.776 366.807 722.971C368.049 722.461 373.644 720.428 379.239 718.453C381.877 717.522 385.213 716.295 389.107 714.829C389.085 716.487 389.085 725.115 390.646 733.491 393.58 741.49C388.324 743.266 383.092 745.231 380.693 746.289C378.295 747.347 372.409 749.745 367.612 751.617C354.59 756.701 349.885 759.808 346.276 765.709C344.482 768.641 342.335 771.835 341.505 772.801C340.677 773.769 334.765 782.107 328.37 791.329C321.975 800.551 315.762 808.107 314.563 808.123C312.97 808.143 314.157 809.278 312.34 814.279C310.365 816.408 308.749 819.193 292.847 838.412 271.793 858.919C259.861 870.542 246.99 883.079 243.192 886.779C236.832 892.978 226.25 900.98 203.724 916.625C191.101 925.39 181.276 953.447C177.415 964.347C176.751 966.455 175.818 968.054 174.472 972.744C173.94 974.963 169.909 984.642C167.931 988.966 166.314 995.213C165.087 999.302C161.044 1007.22 157.603 1015.22C147.267 1039.23 132.513 1068.99C104.309 1125.16 87.2726 1130.8C80.4621 1129.27 76.2237 1121.39C74.4738 1116.08 91.4034 1087.16C101.803 1069.94 116.237 1038.47C123.791 1021.76C129.954 1006.5C133.715 998.477C141.655 980.309C148.785 961.441C159.14 932.132C167.866 906.556 186.276 893.7C201.876 883.2 230.265 859.515C245.475 845.137 279.006 810.888C289.61 798.62 298.107 786.638C308.991 771.56C313.109 765.428C319.961 754.01C332.868 731.8Z" fill="#1C4EDD"/>
+        <path d="M433.703 0.466C434.896-0.621 473.835 0.365 481.201 1.671C485.076 2.357 505.687 5.811C528.668 9.624 541.296 14.553C557.123 19.977C568.292 24.6 577.695 29.281C595.582 37.794C614.814 48.529C629.931 60.207C640.128 68.187C642.982 70.478C666.805 89.469C684.295 107.727C697.018 120.981C723.453 161.7C733.502 171.875C776.326 193.697C812.359 214.031C836.412 229.436C855.916 243.452C905.678 281.092C916.811 291.281C927.905 315.759C907.198 345.636C869.41 347.317C837.067 340.8C795.732 334.804C770.817 337.198C753.436 384.504C746.108 406.235C738.427 430.298C731.704 461.008C728.06 475.272C721.683 518.917L718.2 548.068L765.849 532.697C780.238 528.198C796.371 523.193C813.085 518.165C837.712 510.891C854.702 509.365C874.406 515.38C887.936 524.768C905.377 537.301C933.1 556.109C915.759 579.32C882.47 555.866C867.668 546.356C805.818 550.052C786.196 556.669C766.065 563.473C747.682 570.405C731.24 577.458C781.54 591.539C811.632 598.876C840.678 608.502C871.222 644.497C912.645 693.992C934.885 723.48C951.887 747.885C956.387 754.339C930.812 754.01C911.917 742.074C882.874 704.327C854.948 672.401C845.061 662.174C820.235 652.556C758.582 649.545C697.538 646.084C650.307 640.965C636.373 642.143C605.054 626.743C621.79 611.884C627.15 595.851C640.178 596.692C654.667 607.38C675.876 616.895C732.42 621.437C805.637 624.187C787.72 620.546C730.149 604.843C681.784 583.925C682.281 554.484C694.107 505.067C716.719 409.869C729.725 369.173C735.952 350.278C750.653 312.366C780.263 305.861C833.433 311.014C878.853 316.392C891.56 314.484C886.346 304.06C870.373 289.235C840.786 267.433C813.499 250.55C771.397 224.373C749.019 212.936C705.604 194.762C700.045 198.048C698.304 207.132C696.101 252.256C644.617 352.533C605.404 399.829C566.254 401.429C517.505 445.477C406.604 543.814C354.531 568.9C270.736 612.064C242.29 636.811C214.949 744.882C198.985 816.099C157.845 860.428C121.633 850.741C140.478 834.027C166.078 810.343C173.923 800.839C190.66 775.865C185.059 653.301C162.893 623.55C205.877 623.845C241.165 599.313C266.6 582.695C342.178 544.704C399.22 517.366C433.016 498.773C499.824 459.779C544.594 459.163C576.967 389.474C622.689 328.374C656.823 269.547C663.383 254.947C588.137 245.228C575.937 236.324C617.463 216.564H669.428L666.486 205.454C633.274 175.117C588.75 147.432C547.836 128.734C467.171 38.9226C438.285 37.0323C369.139 46.7439C326.542 60.6228C255.699 110.053C225.119 122.329C241.748 86.2696C309.676 34.8864C322.278 29.2653C370.52 11.4997C387.96 6.58175C420.662 1.98116C433.703 0.466Z" fill="#1C4EDD"/>
+        <path d="M919.569 564.648C948.988 584.26 1045.41 636.202 1108.42 622.536" stroke="#1C4EDD" stroke-width="30" stroke-linecap="round"/>
+        <path d="M411 833C411 862 415 887 422 911C430 934 439 953 449 967C459 980 474 992 495 1003C515 1013 536 1018 559 1018C581 1018 599 1012 611 1000C624 987 631 972 631 954C631 937 622 919 605 903C589 886 581 873 581 863C581 860 582 856 586 853C595 844 615 839 646 839C678 839 700 843 713 849C726 855 733 866 733 881C733 978 725 1037 708 1057C697 1069 676 1080 644 1088C612 1097 578 1101 542 1101C468 1101 411 1077 370 1030C352 1009 337 981 326 946C315 910 309 872 309 831C309 704 358 621 456 582C484 571 517 565 554 565H568C616 565 649 571 669 581C689 591 702 601 709 612C716 623 720 631 720 637C720 655 716 668 709 674C703 681 697 684 691 684C686 684 668 678 635 665C603 653 576 646 553 646C506 646 470 664 444 699C422 729 411 774 411 833Z" fill="black"/>
+        <path d="M1012 848V846L1012 839C1011 836 1011 834 1011 833C1011 819 1005 806 992 795C979 784 965 778 950 778H939C918 778 901 786 886 802C872 818 865 836 865 856V862C865 869 870 873 880 873L889 874H912L914 873L982 870L990 869C1005 869 1012 862 1012 848ZM1077 915C1057 924 1017 928 957 928C898 928 868 937 868 954C868 978 877 996 895 1010C913 1023 939 1030 972 1030C985 1030 1002 1026 1021 1020C1041 1014 1057 1010 1068 1010C1081 1010 1088 1021 1088 1043C1088 1057 1073 1070 1043 1083C1014 1095 985 1101 957 1101H948C918 1101 891 1097 868 1088C845 1078 827 1067 813 1053C799 1038 788 1020 779 996C771 973 766 947 766 918V909C766 851 781 805 810 771C826 753 845 740 869 730C892 721 916 716 942 716H959C977 716 995 719 1014 726C1051 740 1077 766 1091 805C1098 824 1102 843 1102 860V868C1102 893 1094 909 1077 915Z" fill="black"/>
+        <path d="M1231 1076C1222 1084 1208 1087 1189 1087C1170 1087 1157 1084 1147 1077C1138 1070 1134 1061 1134 1049V1035C1134 1030 1136 1020 1140 1006C1144 992 1146 981 1146 973C1147 965 1147 937 1147 891C1147 844 1146 812 1145 795L1143 783C1140 769 1139 759 1139 754C1139 748 1142 743 1146 737C1151 732 1159 729 1170 729C1181 729 1195 731 1211 734C1228 738 1241 740 1252 740C1263 740 1277 737 1295 732C1313 727 1329 725 1344 725C1360 725 1374 727 1385 732C1398 736 1410 741 1422 747C1434 753 1442 756 1447 756C1451 756 1466 750 1491 737C1516 725 1539 719 1562 719C1584 719 1604 724 1620 734C1638 745 1651 761 1661 782C1670 803 1675 854 1675 935C1675 964 1677 984 1679 995L1683 1008L1688 1020C1691 1028 1692 1038 1692 1049C1692 1059 1688 1069 1680 1077C1672 1084 1660 1088 1643 1088H1630C1605 1088 1590 1079 1584 1061C1581 1054 1580 1018 1580 952C1580 887 1577 846 1570 830C1564 815 1556 805 1545 800C1539 797 1531 796 1520 796C1510 796 1500 799 1490 805C1480 810 1473 821 1468 836C1463 851 1460 890 1460 954C1460 967 1462 983 1466 1003C1470 1022 1473 1034 1473 1037C1473 1058 1468 1072 1457 1078C1447 1084 1428 1087 1399 1087C1370 1087 1355 1076 1355 1053L1356 1039L1357 1026L1362 1000C1363 992 1364 964 1364 915C1364 866 1360 833 1351 816C1342 798 1327 790 1306 790C1299 790 1289 793 1278 799C1266 806 1257 815 1251 828C1244 841 1241 875 1241 932L1244 1033C1244 1054 1240 1068 1231 1076Z" fill="black"/>
+        <path d="M1749 1089C1716 1089 1691 1080 1674 1061C1657 1042 1647 1018 1643 988C1639 957 1641 923 1649 888C1658 850 1672 817 1690 789C1709 761 1731 740 1756 725C1781 710 1807 703 1833 703C1857 703 1875 708 1889 718C1903 727 1914 740 1922 757C1930 774 1936 792 1939 813C1944 834 1947 855 1950 876C1953 902 1956 926 1959 948C1962 971 1966 989 1972 1004C1979 1017 1988 1024 2000 1024C2007 1024 2014 1022 2021 1018C2029 1014 2037 1008 2045 1002L2067 1033C2055 1047 2040 1059 2021 1070C2003 1082 1985 1087 1967 1087C1949 1087 1935 1082 1924 1071C1914 1060 1905 1045 1899 1028C1893 1010 1889 990 1885 969C1882 947 1879 925 1877 904C1874 874 1871 849 1866 827C1862 806 1857 790 1850 778C1843 767 1833 761 1819 761C1806 761 1793 767 1782 779C1771 790 1761 806 1752 825C1744 845 1737 867 1732 892C1727 920 1725 944 1726 963C1728 983 1733 998 1741 1009C1749 1020 1761 1025 1776 1025C1792 1025 1808 1018 1825 1005C1843 992 1860 975 1877 954C1894 932 1911 906 1928 878C1944 849 1960 820 1975 789C1990 758 2005 728 2019 697L2081 720C2062 756 2043 792 2023 827C2004 862 1984 895 1963 927C1943 958 1921 986 1898 1011C1877 1035 1853 1054 1828 1068C1803 1082 1777 1089 1749 1089Z" fill="#1C4EDD"/>
+        <path d="M453.616 1138.79H1922.65" stroke="#1C4EDD" stroke-width="13" stroke-linecap="round"/>
+        <circle cx="1953" cy="1138" r="9" fill="#1C4EDD"/>
+        <circle cx="1993" cy="1138" r="9" fill="#1C4EDD"/>
+        <circle cx="2033" cy="1138" r="9" fill="#1C4EDD"/>
+        <circle cx="343" cy="1138" r="9" fill="#1C4EDD"/>
+        <circle cx="383" cy="1138" r="9" fill="#1C4EDD"/>
+        <circle cx="423" cy="1138" r="9" fill="#1C4EDD"/>
+        <text x="690" y="1310" font-family="Georgia,serif" font-size="160" font-weight="600" fill="black">GEMA</text>
+        <text x="693" y="1440" font-family="Arial,sans-serif" font-size="60" font-weight="300" fill="#888" letter-spacing="8">Grupo de Estudos em Melhoramento Animal</text>
+      </svg>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="linha-deco">
+  <div class="linha-inner">
+    <span class="linha-item">Genética Quantitativa</span><span class="linha-dot"></span>
+    <span class="linha-item">Melhoramento Animal</span><span class="linha-dot"></span>
+    <span class="linha-item">Genômica Aplicada</span><span class="linha-dot"></span>
+    <span class="linha-item">Jumento Pêga</span><span class="linha-dot"></span>
+    <span class="linha-item">BLUP · BLUPF90+</span><span class="linha-dot"></span>
+    <span class="linha-item">Equídeos Brasileiros</span><span class="linha-dot"></span>
+    <span class="linha-item">Morfometria · PCA</span><span class="linha-dot"></span>
+    <span class="linha-item">EMVZ · UFBA</span><span class="linha-dot"></span>
+    <span class="linha-item">Genética Quantitativa</span><span class="linha-dot"></span>
+    <span class="linha-item">Melhoramento Animal</span><span class="linha-dot"></span>
+    <span class="linha-item">Genômica Aplicada</span><span class="linha-dot"></span>
+    <span class="linha-item">Jumento Pêga</span><span class="linha-dot"></span>
+    <span class="linha-item">BLUP · BLUPF90+</span><span class="linha-dot"></span>
+    <span class="linha-item">Equídeos Brasileiros</span><span class="linha-dot"></span>
+    <span class="linha-item">Morfometria · PCA</span><span class="linha-dot"></span>
+    <span class="linha-item">EMVZ · UFBA</span><span class="linha-dot"></span>
+  </div>
+</div>
+
+<section id="professores">
+  <div class="container">
+    <div class="section-label">Equipe</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Professores &amp; Pesquisadores</h2>
+    <p class="section-desc">Pesquisadores dedicados à genética quantitativa, melhoramento animal e genômica de raças brasileiras.</p>
+    <div class="prof-grid">
+      <div class="prof-card">
+        <div class="prof-avatar">NB</div>
+        <div class="prof-nome">Prof. Dr. Nome Sobrenome</div>
+        <div class="prof-cargo">Coordenador · EMVZ/UFBA</div>
+        <p class="prof-desc">Pesquisa em avaliação genética e genômica de equídeos. Experiência em BLUP, modelos mistos e genômica aplicada a raças nativas.</p>
+        <div class="prof-tags"><span class="tag">Genômica</span><span class="tag">BLUP</span><span class="tag">Equídeos</span></div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-avatar">MS</div>
+        <div class="prof-nome">Prof. Dr. Maria Silva</div>
+        <div class="prof-cargo">Pesquisadora · EMVZ/UFBA</div>
+        <p class="prof-desc">Especialista em herdabilidade e correlações genéticas para características de conformação e andamento em raças nordestinas.</p>
+        <div class="prof-tags"><span class="tag">Herdabilidade</span><span class="tag">Morfometria</span><span class="tag">Pêga</span></div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-avatar">JF</div>
+        <div class="prof-nome">Prof. Dr. João Ferreira</div>
+        <div class="prof-cargo">Pesquisador · EMVZ/UFBA</div>
+        <p class="prof-desc">Foco em análise de pedigree, parentesco e conservação genética de raças ameaçadas no semiárido brasileiro.</p>
+        <div class="prof-tags"><span class="tag">Pedigree</span><span class="tag">Conservação</span><span class="tag">SNP</span></div>
+      </div>
+      <div class="prof-card">
+        <div class="prof-avatar">GS</div>
+        <div class="prof-nome">M.Sc. Gleb Strauss</div>
+        <div class="prof-cargo">Mestrando · PPGZ/UFBA</div>
+        <p class="prof-desc">Caracterização morfométrica e herdabilidade do jumento Pêga. Pipelines em R para genética quantitativa e genômica.</p>
+        <div class="prof-tags"><span class="tag">PCA</span><span class="tag">Bayesiana</span><span class="tag">Jumento Pêga</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publicacoes">
+  <div class="container">
+    <div class="section-label">Produção Científica</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Publicações Recentes</h2>
+    <p class="section-desc">Artigos em periódicos nacionais e internacionais em genética quantitativa e melhoramento de equídeos.</p>
+    <div class="pub-list">
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div class="pub-body">
+          <div class="pub-title">Heritability estimates for gait, limb and shoulder scores in Pêga donkeys using Bayesian inference</div>
+          <div class="pub-authors">Strauss, G.; Silva, M.; Ferreira, J. et al.</div>
+          <div class="pub-journal">Livestock Science <span class="pub-badge">Q1</span></div>
+          <a href="#" class="pub-doi">↗ DOI (adicionar link)</a>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div class="pub-body">
+          <div class="pub-title">Morphometric characterization of Pêga donkeys using principal component analysis</div>
+          <div class="pub-authors">Strauss, G.; Costa, A.; Ferreira, J. et al.</div>
+          <div class="pub-journal">Arquivo Brasileiro de Medicina Veterinária e Zootecnia <span class="pub-badge">Q2</span></div>
+          <a href="#" class="pub-doi">↗ DOI (adicionar link)</a>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div class="pub-body">
+          <div class="pub-title">Genetic parameters for reproductive traits in Mangalarga Marchador horses</div>
+          <div class="pub-authors">Silva, M.; Strauss, G. et al.</div>
+          <div class="pub-journal">Genetics and Molecular Biology <span class="pub-badge">Q1</span></div>
+          <a href="#" class="pub-doi">↗ DOI (adicionar link)</a>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2023</div>
+        <div class="pub-body">
+          <div class="pub-title">Inbreeding and genetic diversity in Brazilian native donkey breeds</div>
+          <div class="pub-authors">Ferreira, J.; Strauss, G. et al.</div>
+          <div class="pub-journal">Journal of Animal Breeding and Genetics</div>
+          <a href="#" class="pub-doi">↗ DOI (adicionar link)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="premios">
+  <div class="container">
+    <div class="section-label">Reconhecimento</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Prêmios &amp; Distinções</h2>
+    <p class="section-desc">Reconhecimentos obtidos em eventos científicos e instituições de fomento à pesquisa.</p>
+    <div class="premio-grid">
+      <div class="premio-card">
+        <div class="premio-topo"><div class="premio-icon">🏆</div><div class="premio-ano">2024</div></div>
+        <div class="premio-nome">Melhor Trabalho em Genética Animal</div>
+        <div class="premio-entidade">Congresso Brasileiro de Zootecnia (ZOOTEC)</div>
+        <p class="premio-desc">Herdabilidade de escores de andamento no jumento Pêga via inferência bayesiana com BLUPF90+.</p>
+      </div>
+      <div class="premio-card">
+        <div class="premio-topo"><div class="premio-icon">🎖️</div><div class="premio-ano">2023</div></div>
+        <div class="premio-nome">Destaque em Produção Científica</div>
+        <div class="premio-entidade">EMVZ · UFBA</div>
+        <p class="premio-desc">Reconhecimento pela publicação em periódicos de alto impacto e pela conservação de raças nativas.</p>
+      </div>
+      <div class="premio-card">
+        <div class="premio-topo"><div class="premio-icon">📌</div><div class="premio-ano">2023</div></div>
+        <div class="premio-nome">Menção Honrosa — Poster</div>
+        <div class="premio-entidade">Simpósio Brasileiro de Melhoramento Animal (SBMA)</div>
+        <p class="premio-desc">Diversidade genética e endogamia em raças asininas nativas do Nordeste brasileiro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="noticias">
+  <div class="container">
+    <div class="section-label">Últimas</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Notícias do Grupo</h2>
+    <p class="section-desc">Atualizações sobre projetos, publicações e eventos do GEMA.</p>
+    <div class="noticias-grid">
+      <div class="noticia-destaque">
+        <div>
+          <div class="noticia-data nd-data">Maio · 2025</div>
+          <h3 class="noticia-titulo">Artigo sobre herdabilidade do Pêga aceito em periódico internacional</h3>
+          <p class="noticia-texto">O trabalho de estimação de parâmetros genéticos para escores de andamento, membros e paleta no jumento Pêga, via inferência bayesiana com BLUPF90+, foi aceito para publicação. Um dos primeiros estudos genéticos de larga escala com a raça no Brasil.</p>
+        </div>
+        <a href="#" class="noticia-link-btn">Ler mais →</a>
+      </div>
+      <div class="noticias-lista">
+        <div class="noticia-mini">
+          <div class="noticia-data nm-data">Abril · 2025</div>
+          <h4 class="nm-titulo">Apresentação no SBMA 2025 — Salvador, BA</h4>
+        </div>
+        <div class="noticia-mini">
+          <div class="noticia-data nm-data">Março · 2025</div>
+          <h4 class="nm-titulo">Novo módulo de genômica na trilha aberta do GEMA</h4>
+        </div>
+        <div class="noticia-mini">
+          <div class="noticia-data nm-data">Jan · 2025</div>
+          <h4 class="nm-titulo">Início do projeto de caracterização genômica do Campolina</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <svg class="footer-logo-svg" viewBox="0 0 700 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M70 100C73 94 75 92 76 93C76.3 94 76.4 95 76.3 97C76.2 99 76.3 99 76.6 99C77 99 78 98.6 79.1 98.2C80.6 97.7 80.6 101.3 81.6 103.3C80.8 103.6 80 103.9 79.5 104.2C79 104.4 77.9 104.9 77 105.3C74.4 106.3 73.5 106.9 72.8 108C72.5 108.6 72 109.2 71.9 109.4C71.7 109.6 70.6 111.1 69.4 112.7C68.2 114.3 67 115.7 66.8 115.7C66.5 115.7 66.7 116 67 116.2C67.4 116.5 67.2 116.8 66.6 117.4C66.2 117.8 65.9 118.2 65.9 118.3C65.9 118.7 62.8 122 58.7 126C56.4 128.2 53.9 130.7 53.2 131.4C52 132.6 49.9 134.1 45.6 137C43.3 138.6 43.7 137.9 41.4 144.1C41.1 145.1 40.7 146 40.7 146.2C40.4 147.2 39.4 148.3 37.8 151.7C35.8 156.2 35.3 157.3 32.9 161.9C27.5 172.7 26.3 174.3 24.2 173.8C22.9 173.5 22.5 173.1 22.1 172C21.8 171 22.1 170.3 25 165.5C27 162.3 27.6 161.1 29.8 156.1C32.1 150.6 33.9 145.8 35.2 141.9C36.5 137.9 37.7 135 38 134C39.4 130.1 42.3 122.4 47.6 116.3C50.4 113.1 54.8 109.6 59.3 107.9C64.1 106.1 68.2 104.5 70 100Z" fill="#1C4EDD"/>
+        <text x="90" y="120" font-family="Georgia,serif" font-size="90" font-weight="600" fill="white">GEMA</text>
+      </svg>
+      <p class="footer-tagline">Grupo de Estudos em Melhoramento Animal,<br>Genética Quantitativa e Genômica Aplicada.<br><span style="color:rgba(255,255,255,.2);font-size:.8rem">EMVZ · UFBA · Salvador, Bahia</span></p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navegação</div>
+      <ul class="footer-links">
+        <li><a href="#professores">Professores</a></li>
+        <li><a href="#publicacoes">Publicações</a></li>
+        <li><a href="#premios">Prêmios</a></li>
+        <li><a href="#noticias">Notícias</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Recursos</div>
+      <ul class="footer-links">
+        <li><a href="https://glebstrauss.github.io/gema/" target="_blank">Curso aberto</a></li>
+        <li><a href="https://github.com/Glebstrauss/gema" target="_blank">GitHub</a></li>
+        <li><a href="https://www.ufba.br" target="_blank">UFBA</a></li>
+        <li><a href="https://github.com/Glebstrauss/gema/issues/new" target="_blank">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 GEMA · EMVZ/UFBA</span>
+    <span><a href="https://pages.github.com" target="_blank">GitHub Pages</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

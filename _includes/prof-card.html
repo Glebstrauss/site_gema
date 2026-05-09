@@ -3,9 +3,12 @@
     <img src="{{ include.prof.foto | relative_url }}"
          alt="Foto de {{ include.prof.nome }}"
          loading="lazy"
-         style="width:52px;height:52px;border-radius:50%;object-fit:cover;margin-bottom:1rem">
+         width="52"
+         height="52"
+         class="prof-foto">
   {% else %}
-    <div class="prof-avatar">{{ include.prof.avatar }}</div>
+    {% assign av_idx = include.prof.ordem | modulo: 5 %}
+    <div class="prof-avatar prof-avatar--{{ av_idx }}" aria-hidden="true">{{ include.prof.avatar }}</div>
   {% endif %}
   <div class="prof-nome">{{ include.prof.nome }}</div>
   <div class="prof-cargo">{{ include.prof.cargo }}</div>

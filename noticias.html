@@ -51,7 +51,8 @@ description: "Últimas notícias e atualizações do GEMA — projetos, publica�
     <h2 class="section-title">Todas as Notícias</h2>
     <div class="noticias-all">
       {% for noticia in site.data.noticias.items %}
-      <div class="noticia-card">
+      <div class="noticia-card{% if noticia.destaque %} noticia-card--destaque{% endif %}">
+        {% if noticia.destaque %}<span class="noticia-badge">Destaque</span>{% endif %}
         <span class="noticia-data">{{ noticia.data }}</span>
         <h3 class="noticia-titulo">{{ noticia.titulo }}</h3>
         <p>{{ noticia.texto }}</p>

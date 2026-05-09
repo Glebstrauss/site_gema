@@ -3,7 +3,7 @@ backend:
   repo: Glebstrauss/site_gema
   branch: master
   auth_type: pkce
-  app_id: COLE_AQUI_O_CLIENT_ID   # ← substituir após criar o OAuth App (Etapa 5)
+  app_id: Ov23lisswKeYlP9Kp0C1
 
 # Onde as fotos são salvas no repositório
 media_folder: "assets/img/professores"

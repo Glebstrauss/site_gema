@@ -52,13 +52,13 @@ description: "Prêmios e distinções conquistados pelo GEMA em eventos científ
   {% if forloop.even %}{% assign bg = "#111116" %}{% endif %}
 <section id="premio-{{ ano }}" style="background:{{ bg }}">
   <div class="container">
-    <div class="section-label" style="color:var(--azul-mid)">{{ ano }}</div>
+    <h2 class="section-label" style="color:var(--azul-mid)"><time datetime="{{ ano }}">{{ ano }}</time></h2>
     <div class="divider" style="background:var(--azul-mid)"></div>
     <div class="premio-grid">
       {% for premio in premios_ano %}
       <div class="premio-card">
         <div class="premio-topo"><div class="premio-icon">{{ premio.icone }}</div><div class="premio-ano">{{ premio.ano }}</div></div>
-        <div class="premio-nome">{{ premio.nome }}</div>
+        <h3 class="premio-nome">{{ premio.nome }}</h3>
         <div class="premio-entidade">{{ premio.entidade }}</div>
         <p class="premio-desc">{{ premio.descricao }}</p>
       </div>

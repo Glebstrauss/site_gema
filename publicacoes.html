@@ -101,7 +101,7 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
     <!-- ── Grupos por ano ─────────────────────────────────────────────────── -->
     {% for ano in anos %}
     <div class="pub-year-group" id="pub-{{ ano }}">
-      <div class="pub-year-label">{{ ano }}</div>
+      <h2 class="pub-year-label"><time datetime="{{ ano }}">{{ ano }}</time></h2>
       <div class="pub-list">
         {% assign pubs_ano = site.data.publicacoes.items | where: "ano", ano %}
         {% for pub in pubs_ano %}

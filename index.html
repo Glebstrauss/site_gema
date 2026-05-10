@@ -5,7 +5,7 @@ description: "Grupo de pesquisa em genética quantitativa, genômica e melhorame
 ---
 
 <div class="hero-wrapper">
-<section id="inicio">
+<section id="inicio" aria-label="Apresentação do grupo">
   <div>
     <div class="hero-tag">EMVZ · UFBA · Salvador, BA</div>
     <h1 class="hero-title">Genética &amp;<br><em>Melhoramento</em><br>Animal Aplicados</h1>
@@ -172,7 +172,7 @@ description: "Grupo de pesquisa em genética quantitativa, genômica e melhorame
         {% for noticia in secundarias %}
         <div class="noticia-mini">
           <div class="noticia-data nm-data">{{ noticia.data }}</div>
-          <h4 class="nm-titulo">{% if noticia.link != "" %}<a href="{{ noticia.link }}">{{ noticia.titulo }}</a>{% else %}{{ noticia.titulo }}{% endif %}</h4>
+          <h3 class="nm-titulo">{% if noticia.link != "" %}<a href="{{ noticia.link }}">{{ noticia.titulo }}</a>{% else %}{{ noticia.titulo }}{% endif %}</h3>
           <p class="nm-texto">{{ noticia.texto | truncatewords: 16 }}</p>
         </div>
         {% endfor %}

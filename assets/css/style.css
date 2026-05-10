@@ -89,6 +89,12 @@ section{padding:6rem 3rem}
 .pub-badge{display:inline-block;font-size:.68rem;padding:.18rem .55rem;border-radius:100px;font-weight:500;margin-left:.5rem;background:var(--azul-claro);color:var(--azul-escuro)}
 .pub-doi{display:inline-flex;align-items:center;gap:.3rem;text-decoration:none;font-size:.75rem;color:var(--cinza);border:1px solid var(--borda);padding:.18rem .55rem;border-radius:100px;margin-top:.5rem;transition:color .2s,border-color .2s}
 .pub-doi:hover{color:var(--azul);border-color:var(--azul)}
+/* ações por publicação (DOI + Citar) */
+.pub-actions{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-top:.5rem}
+.pub-actions .pub-doi{margin-top:0}
+.pub-citar{display:inline-flex;align-items:center;gap:.3rem;background:none;border:1px solid var(--borda);border-radius:100px;padding:.18rem .55rem;font-size:.75rem;color:var(--cinza);cursor:pointer;font-family:inherit;transition:color .2s,border-color .2s,background .2s}
+.pub-citar:hover{color:var(--azul);border-color:var(--azul)}
+.pub-citar.copiado{color:#0a6b64;border-color:#0a6b64;background:rgba(0,140,130,.07)}
 
 /* qualis colorido */
 .pub-badge--q1{background:rgba(28,78,221,.12);color:var(--azul-escuro)}
@@ -217,6 +223,13 @@ section[id]{scroll-margin-top:84px}
 /* esconde coluna de ano redundante dentro dos grupos de ano */
 .pub-year-group .pub-item .pub-year{display:none}
 
+/* ── navegação por ano de prêmios ────────────────────────────────────────── */
+.premio-year-nav{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 3rem;background:#0a0a12;border-bottom:1px solid rgba(28,78,221,.15)}
+.premio-year-nav .pub-year-btn{border-color:rgba(85,120,232,.3);color:var(--azul-mid)}
+.premio-year-nav .pub-year-btn:hover{background:rgba(28,78,221,.15);border-color:var(--azul-mid)}
+.premio-year-nav .pub-year-btn.is-active{background:var(--azul);color:#fff;border-color:var(--azul)}
+@media(max-width:600px){.premio-year-nav{padding:.75rem 1.25rem}}
+
 /* ── barra de stats de prêmios ───────────────────────────────────────────── */
 .premios-statsbar{background:#0f0f15;border-bottom:1px solid rgba(28,78,221,.18);padding:.1rem 0}
 .premios-stats{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:.75rem 0}
@@ -267,10 +280,12 @@ section[id]{scroll-margin-top:84px}
 @media print{
   nav,footer,.pub-filter-bar,.pub-year-nav,.back-to-top,
   .btn-primary,.btn-outline,.pub-print-btn,.linha-deco,.page-hero .hero-actions,
-  .skip-link{display:none !important}
+  .skip-link,.pub-citar,.nav-theme-btn,.hero-actions,.premio-year-nav{display:none !important}
   body{font-size:10.5pt;color:#000;background:#fff}
-  .page-hero{padding:1rem 0;background:#fff !important;border:none !important}
+  .page-hero{padding:1rem 0;background:#fff !important;border:none !important;color:#000 !important}
+  .page-hero-title,.page-hero-sub,.page-hero-count{color:#000 !important}
   .page-hero-title{font-size:18pt}
+  /* publicações */
   .pub-hidden,.pub-year-group.pub-hidden{display:block !important}
   .pub-item{break-inside:avoid;border-bottom:1px solid #ddd !important;background:none !important}
   .pub-item:hover{background:none}
@@ -279,6 +294,16 @@ section[id]{scroll-margin-top:84px}
   a{color:#000;text-decoration:none}
   .pub-doi::after{content:" (" attr(href) ")";font-size:.72em;color:#444}
   .pub-badge{border:1px solid #999 !important;background:#f0f0f0 !important;color:#000 !important}
+  /* professores */
+  .prof-grid{grid-template-columns:repeat(3,1fr) !important}
+  .prof-card{break-inside:avoid;box-shadow:none !important;transform:none !important;border:1px solid #ddd}
+  .prof-card::after{display:none}
+  .prof-avatar{background:#f0f0f0 !important;color:#333 !important}
+  .tag{background:#f0f0f0 !important;color:#333 !important;border:1px solid #ddd}
+  .join-section{display:none !important}
+  .linhas-grid{page-break-before:auto}
+  .linha-card{break-inside:avoid;box-shadow:none !important}
+  .linha-num{color:#ddd !important}
 }
 
 /* ── 404 ─────────────────────────────────────────────────────────────────── */

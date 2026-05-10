@@ -148,19 +148,27 @@
   var btn = document.getElementById('nav-theme-btn');
   if (!btn) return;
   var html = document.documentElement;
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  function applyThemeMeta(dark) {
+    if (themeMeta) themeMeta.setAttribute('content', dark ? '#0d0d14' : '#1C4EDD');
+  }
 
   function setTheme(dark) {
     html.classList.toggle('dark', dark);
     try { localStorage.setItem('gema-theme', dark ? 'dark' : 'light'); } catch(e) {}
     btn.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro');
+    applyThemeMeta(dark);
   }
 
   btn.addEventListener('click', function () {
     setTheme(!html.classList.contains('dark'));
   });
 
-  // sync aria-label with current state on load
-  btn.setAttribute('aria-label', html.classList.contains('dark') ? 'Ativar tema claro' : 'Ativar tema escuro');
+  // sync estado inicial (FOUC script já aplicou a classe; aqui apenas sincroniza meta e aria-label)
+  var isDark = html.classList.contains('dark');
+  btn.setAttribute('aria-label', isDark ? 'Ativar tema claro' : 'Ativar tema escuro');
+  applyThemeMeta(isDark);
 })();
 
 // ── Voltar ao topo ─────────────────────────────────────────────────────────

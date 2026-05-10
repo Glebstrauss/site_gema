@@ -316,6 +316,16 @@ html.dark section[style*="background:#111116"]{background:#0c0c14 !important}
 /* texto branco dentro de seções escuras — protege */
 html.dark .premio-nome{color:#e2e2ec !important}
 html.dark .noticia-destaque .noticia-titulo{color:#e2e2ec !important}
+/* qualquer elemento com color:var(--branco) inline em fundo escuro (ex: hero prêmios, section awards) */
+html.dark [style*="color:var(--branco)"]{color:#e2e2ec !important}
+/* números decorativos de linhas de pesquisa (--azul-claro vira quase invisível no dark) */
+html.dark .linha-num{color:rgba(100,150,255,.42)}
+/* avatares de professores — contraste melhorado no dark */
+html.dark .prof-avatar--0{background:rgba(28,78,221,.28);color:var(--azul-mid)}
+html.dark .prof-avatar--1{background:rgba(0,140,130,.24);color:#3ab8b0}
+html.dark .prof-avatar--2{background:rgba(200,50,50,.22);color:#e07575}
+html.dark .prof-avatar--3{background:rgba(100,50,200,.22);color:#a080e8}
+html.dark .prof-avatar--4{background:rgba(200,130,0,.22);color:#dfa030}
 /* mobile nav overlay */
 @media(max-width:600px){html.dark .nav-links{background:rgba(13,13,24,.98) !important}}
 

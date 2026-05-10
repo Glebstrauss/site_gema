@@ -1,4 +1,4 @@
-<div class="prof-card">
+<div class="prof-card" role="article" aria-label="{{ include.prof.nome }}{% if include.prof.cargo != '' %}, {{ include.prof.cargo }}{% endif %}">
   {% if include.prof.foto != "" %}
     <img src="{{ include.prof.foto | relative_url }}"
          alt="Foto de {{ include.prof.nome }}"

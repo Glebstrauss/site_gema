@@ -44,6 +44,10 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
       <button class="pub-reset" id="pub-reset">Limpar filtros</button>
     </p>
 
+    <p class="pub-result-count" id="pub-count" aria-live="polite" aria-atomic="true">
+      {{ site.data.publicacoes.items | size }} publicações
+    </p>
+
     <!-- ── Navegação rápida por ano ──────────────────────────────────────── -->
     <nav class="pub-year-nav" aria-label="Navegar por ano" id="pub-year-nav">
       {% for ano in anos %}
@@ -84,15 +88,27 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
 
 <script>
 (function () {
-  var search   = document.getElementById('pub-search');
-  var resetBtn = document.getElementById('pub-reset');
-  var noRes    = document.getElementById('pub-no-results');
-  var yearNav  = document.getElementById('pub-year-nav');
+  var search     = document.getElementById('pub-search');
+  var resetBtn   = document.getElementById('pub-reset');
+  var noRes      = document.getElementById('pub-no-results');
+  var yearNav    = document.getElementById('pub-year-nav');
+  var countEl    = document.getElementById('pub-count');
   var filterBtns = Array.from(document.querySelectorAll('.pub-filter-btn'));
-  var items    = Array.from(document.querySelectorAll('.pub-item'));
-  var groups   = Array.from(document.querySelectorAll('.pub-year-group'));
-  var activeQ  = '';
+  var items      = Array.from(document.querySelectorAll('.pub-item'));
+  var groups     = Array.from(document.querySelectorAll('.pub-year-group'));
+  var activeQ    = '';
+  var total      = items.length;
 
+  // ── Contador de resultados ────────────────────────────────────────────────
+  function updateCount(n) {
+    if (!countEl) return;
+    countEl.textContent = n === total
+      ? total + ' publicações'
+      : n + ' de ' + total + ' publicações';
+    countEl.classList.toggle('filtered', n !== total);
+  }
+
+  // ── Filtro principal ──────────────────────────────────────────────────────
   function applyFilter() {
     var q = search ? search.value.toLowerCase().trim() : '';
     var matched = 0;
@@ -107,14 +123,15 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
     });
 
     groups.forEach(function (g) {
-      var any = g.querySelectorAll('.pub-item:not(.pub-hidden)').length;
-      g.classList.toggle('pub-hidden', !any);
+      g.classList.toggle('pub-hidden',
+        !g.querySelectorAll('.pub-item:not(.pub-hidden)').length);
     });
 
-    // Esconde nav de anos durante busca (âncoras perdem sentido)
-    if (yearNav) yearNav.style.display = (q || activeQ) ? 'none' : '';
-
-    if (noRes) noRes.classList.toggle('visible', matched === 0);
+    var filtering = !!(q || activeQ);
+    if (yearNav)  yearNav.style.display  = filtering ? 'none' : '';
+    if (countEl)  countEl.style.display  = filtering ? ''     : 'none';
+    if (noRes)    noRes.classList.toggle('visible', matched === 0);
+    updateCount(matched);
   }
 
   function reset() {
@@ -137,5 +154,37 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
       applyFilter();
     });
   });
+
+  // ── Atalho "/" — foca o campo de busca ───────────────────────────────────
+  document.addEventListener('keydown', function (e) {
+    var tag = document.activeElement ? document.activeElement.tagName : '';
+    if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
+      e.preventDefault();
+      if (search) {
+        search.focus();
+        search.select();
+        search.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+  });
+
+  // ── Scrollspy — destaca o botão de ano ativo ─────────────────────────────
+  if ('IntersectionObserver' in window && groups.length) {
+    var yearBtns = Array.from(document.querySelectorAll('.pub-year-btn'));
+    var yearObs  = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          yearBtns.forEach(function (btn) {
+            btn.classList.toggle('is-active',
+              btn.getAttribute('href') === '#' + e.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-8% 0px -82% 0px', threshold: 0 });
+    groups.forEach(function (g) { yearObs.observe(g); });
+  }
+
+  // Esconde o contador inicialmente (só aparece ao filtrar)
+  if (countEl) countEl.style.display = 'none';
 })();
 </script>

@@ -203,6 +203,24 @@ footer{background:var(--preto);padding:4.5rem 3rem 2rem}
 /* esconde coluna de ano redundante dentro dos grupos de ano */
 .pub-year-group .pub-item .pub-year{display:none}
 
+/* ── barra de stats de prêmios ───────────────────────────────────────────── */
+.premios-statsbar{background:#0f0f15;border-bottom:1px solid rgba(28,78,221,.18);padding:.1rem 0}
+.premios-stats{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:.75rem 0}
+.psi{display:flex;flex-direction:column;gap:.18rem;padding:1rem 2.5rem 1rem 0}
+.psi-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;color:var(--azul-mid);line-height:1}
+.psi-label{font-size:.68rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
+.psi-div{width:1px;height:2.5rem;background:rgba(255,255,255,.08);margin-right:2.5rem;flex-shrink:0}
+
+/* ── contador de resultados ──────────────────────────────────────────────── */
+.pub-result-count{font-size:.8rem;font-weight:500;color:var(--azul);margin-bottom:1.25rem;letter-spacing:.02em}
+
+/* ano ativo no scrollspy */
+.pub-year-btn.is-active{background:var(--azul);color:#fff;border-color:var(--azul)}
+
+/* título de mini notícia como link */
+.nm-titulo a{color:inherit;text-decoration:none}
+.nm-titulo a:hover{color:var(--azul)}
+
 /* ── badge destaque notícia ─────────────────────────────────────────────── */
 .noticia-badge{display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--azul);color:#fff;padding:.18rem .65rem;border-radius:100px;margin-bottom:.6rem}
 .noticia-card--destaque{border-color:rgba(28,78,221,.35);background:rgba(28,78,221,.025)}
@@ -311,6 +329,9 @@ body.nav-open .nav-hamburger span:nth-child(3){transform:translateY(-7px) rotate
   section{padding:4rem 1.25rem}
   #inicio{padding:7rem 1.25rem 3rem}
   .page-hero{padding:6rem 1.25rem 3rem}
+  .premios-stats{gap:0;flex-direction:column;align-items:flex-start}
+  .psi{padding:.6rem 0}
+  .psi-div{display:none}
   .hero-stats{gap:1.5rem}
   .noticias-all{grid-template-columns:1fr}
   .premio-grid{grid-template-columns:1fr}

@@ -197,6 +197,14 @@
   var isDark = html.classList.contains('dark');
   btn.setAttribute('aria-label', isDark ? 'Ativar tema claro' : 'Ativar tema escuro');
   applyThemeMeta(isDark);
+
+  // Sincroniza com mudança de preferência do SO — só age se o usuário não escolheu manualmente
+  try {
+    window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', function (e) {
+      var stored = localStorage.getItem('gema-theme');
+      if (!stored) setTheme(e.matches);
+    });
+  } catch (e) {}
 })();
 
 // ── Voltar ao topo ─────────────────────────────────────────────────────────

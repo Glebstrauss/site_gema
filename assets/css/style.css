@@ -419,6 +419,17 @@ html.dark .pub-statsbar .psi-num{color:var(--azul-mid)}
 html.dark .pub-filter-btn:not(.is-active){color:var(--azul-mid);border-color:rgba(85,120,232,.3)}
 html.dark .pub-filter-btn.pub-badge--q2:not(.is-active){color:#3ab8b0;border-color:rgba(0,180,160,.3)}
 html.dark .pub-filter-btn.pub-badge--q3:not(.is-active){color:#d4a017;border-color:rgba(160,120,0,.3)}
+/* link ativo na nav em dark mode */
+html.dark .nav-links a.ativa{color:var(--azul-mid)}
+/* divisórias de seção visíveis no dark mode */
+html.dark .divider{background:var(--azul-mid)}
+/* focus search input no dark mode */
+html.dark .pub-search:focus{box-shadow:0 0 0 3px rgba(85,120,232,.2)}
+/* focus rings: --azul (#1C4EDD) sobre fundo escuro ~2.5:1 — usa --azul-mid (~5:1) */
+html.dark :focus-visible{outline-color:var(--azul-mid)}
+/* preserva outline branco em elementos sobre fundo azul sólido */
+html.dark .noticia-link-btn:focus-visible{outline-color:rgba(255,255,255,.8)}
+html.dark .btn-join:focus-visible{outline-color:rgba(255,255,255,.8)}
 
 /* ── acessibilidade ──────────────────────────────────────────────────────── */
 .skip-link{position:absolute;top:-48px;left:1rem;background:var(--azul);color:#fff;padding:.5rem 1.25rem;border-radius:0 0 8px 8px;text-decoration:none;font-size:.85rem;font-weight:500;z-index:9999;transition:top .2s}

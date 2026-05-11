@@ -5,8 +5,6 @@ backend:
   auth_type: pkce
   app_id: Ov23lisswKeYlP9Kp0C1
 
-site_url: https://glebstrauss.github.io/site_gema
-
 # Onde as fotos são salvas no repositório
 media_folder: "assets/img/professores"
 # URL pública das fotos (com o caminho do GitHub Pages)

@@ -207,7 +207,6 @@ footer{background:var(--preto);padding:4.5rem 3rem 2rem}
 /* botão × limpar */
 .pub-search-clear{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--cinza);padding:.28rem;display:none;align-items:center;justify-content:center;border-radius:50%;transition:color .15s,background .15s}
 .pub-search-clear:hover{color:var(--preto);background:rgba(0,0,0,.07)}
-html.dark .pub-search-clear:hover{color:var(--preto);background:rgba(255,255,255,.1)}
 .pub-search-wrap.has-value .pub-search-clear{display:flex}
 .pub-search-wrap.has-value .pub-search{padding-right:2.6rem}
 /* scroll-margin para sections com id (evita sobreposição com nav fixa) */
@@ -280,9 +279,6 @@ section[id]{scroll-margin-top:84px}
 .home-nav-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--preto);margin-bottom:.5rem}
 .home-nav-desc{font-size:.875rem;color:var(--cinza);line-height:1.65;flex:1;margin-bottom:1.25rem}
 .home-nav-arrow{font-size:.85rem;color:var(--azul);font-weight:500;margin-top:auto}
-html.dark .home-nav-card{background:#16161f;border-color:rgba(100,130,255,.15)}
-html.dark .home-nav-card:hover{box-shadow:0 10px 36px rgba(0,0,0,.4);border-color:rgba(100,130,255,.35)}
-html.dark .home-nav-arrow{color:var(--azul-mid)}
 @media(max-width:600px){.home-nav-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:400px){.home-nav-grid{grid-template-columns:1fr}}
 @media print{.home-nav-grid{grid-template-columns:repeat(2,1fr)}.home-nav-card{border:1px solid #ddd !important;box-shadow:none !important}}
@@ -315,7 +311,7 @@ html.dark .home-nav-arrow{color:var(--azul-mid)}
 @media print{
   nav,footer,.pub-filter-bar,.pub-year-nav,.back-to-top,
   .btn-primary,.btn-outline,.pub-print-btn,.linha-deco,.page-hero .hero-actions,
-  .skip-link,.pub-citar,.nav-theme-btn,.hero-actions,.premio-year-nav,
+  .skip-link,.pub-citar,.hero-actions,.premio-year-nav,
   .premios-statsbar,.pub-statsbar,.section-join,.noticia-link-btn{display:none !important}
   body{font-size:10.5pt;color:#000;background:#fff}
   .page-hero{padding:1rem 0;background:#fff !important;border:none !important;color:#000 !important}
@@ -362,118 +358,22 @@ html.dark .home-nav-arrow{color:var(--azul-mid)}
 .hero-title,.section-title,.page-hero-title,.noticia-titulo,.prof-nome,.linha-titulo,.pub-year-label{text-wrap:balance}
 
 /* ── botão de tema ────────────────────────────────────────────────────────── */
-.nav-theme-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:none;border:1px solid var(--borda);cursor:pointer;color:var(--cinza);transition:background .2s,border-color .2s,color .2s;flex-shrink:0}
-.nav-theme-btn:hover{background:var(--azul-claro);border-color:var(--azul);color:var(--azul)}
-.nav-theme-btn:focus-visible{outline:2px solid var(--azul);outline-offset:3px;border-radius:50%}
-.icon-moon{display:none}
-html.dark .icon-sun{display:none}
-html.dark .icon-moon{display:block}
 
-/* ══════════════════════════════════════════════════════════════
-   TEMA ESCURO
-   ══════════════════════════════════════════════════════════════ */
-html.dark{
-  --preto:#e2e2ec;--branco:#0d0d18;--cinza:#9898ab;
-  --cinza-claro:#14141f;--borda:rgba(100,130,255,.14);
-  --azul-claro:rgba(28,78,221,.17)
-}
-html.dark body > nav{background:rgba(13,13,24,.97);border-bottom:1px solid rgba(100,130,255,.14);box-shadow:0 2px 16px rgba(0,0,0,.45)}
-html.dark .prof-card{background:#16161f;border-color:rgba(100,130,255,.15)}
-html.dark .prof-card:hover{box-shadow:0 10px 36px rgba(0,0,0,.35)}
-html.dark .linha-card{background:#16161f;border-color:rgba(100,130,255,.15)}
-html.dark .noticia-mini{background:#16161f;border-color:rgba(100,130,255,.15)}
-html.dark .noticia-mini:hover{background:#1c1c2e;border-color:rgba(100,130,255,.3)}
-html.dark .noticia-card{background:#16161f;border-color:rgba(100,130,255,.15)}
-html.dark .noticia-card:hover{box-shadow:0 10px 36px rgba(0,0,0,.45)}
-html.dark .premio-card:hover{background:rgba(28,78,221,.18) !important;border-color:var(--azul-mid)}
-html.dark .noticia-card--destaque{background:rgba(28,78,221,.18) !important;border-color:rgba(28,78,221,.35) !important}
-html.dark .pub-item:hover{background:#16161f}
-html.dark .pub-filter-bar{background:var(--cinza-claro);border-color:var(--borda)}
-html.dark .pub-search{background:#1a1a2e;border-color:rgba(100,130,255,.2)}
-html.dark .pub-badge{background:rgba(28,78,221,.22);color:var(--azul-mid)}
-html.dark .pub-badge--q1{background:rgba(28,78,221,.22);color:var(--azul-mid)}
-html.dark .pub-badge--q2{background:rgba(0,140,130,.2);color:#3ab8b0}
-html.dark .pub-badge--q3{background:rgba(160,120,0,.18);color:#d4a017}
-html.dark .tag{background:rgba(28,78,221,.18);color:var(--azul-mid)}
-html.dark .linha-deco{background:rgba(28,78,221,.08);border-color:rgba(28,78,221,.12)}
-html.dark footer{background:#09090f !important}
-html.dark .premios-statsbar{background:#0c0c18;border-color:rgba(100,130,255,.14)}
-html.dark .premios-statsbar .psi-num{color:var(--azul-mid)}
-html.dark .premios-statsbar .psi-label{color:rgba(255,255,255,.35)}
-html.dark .premios-statsbar .psi-div{background:rgba(255,255,255,.08)}
-html.dark .premio-year-nav{background:rgba(13,13,24,.97);border-color:rgba(100,130,255,.14)}
-html.dark .notfound-num{color:rgba(28,78,221,.32)}
-/* seções escuras por inline style — mantém escuras */
-html.dark section[style*="background:var(--preto)"]{background:#09090f !important}
-html.dark .page-hero[style*="background:var(--preto)"]{background:#09090f !important}
-html.dark section[style*="background:#111116"]{background:#0c0c14 !important}
-html.dark .noticia-destaque .noticia-titulo{color:#e2e2ec !important}
-/* qualquer elemento com color:var(--branco) inline em fundo escuro (ex: hero prêmios, section awards) */
-html.dark [style*="color:var(--branco)"]{color:#e2e2ec !important}
 /* números decorativos de linhas de pesquisa (--azul-claro vira quase invisível no dark) */
-html.dark .linha-num{color:rgba(100,150,255,.42)}
 /* avatares de professores — contraste melhorado no dark */
-html.dark .prof-avatar--0{background:rgba(28,78,221,.28);color:var(--azul-mid)}
-html.dark .prof-avatar--1{background:rgba(0,140,130,.24);color:#3ab8b0}
-html.dark .prof-avatar--2{background:rgba(200,50,50,.22);color:#e07575}
-html.dark .prof-avatar--3{background:rgba(100,50,200,.22);color:#a080e8}
-html.dark .prof-avatar--4{background:rgba(200,130,0,.22);color:#dfa030}
 /* mobile nav overlay */
-@media(max-width:600px){html.dark .nav-links{background:rgba(13,13,24,.98) !important}}
 /* contraste: --azul (#1C4EDD) sobre fundo escuro falha WCAG AA (~2.4:1);
    --azul-mid (#5578e8) sobre #0d0d18 / #14141f atinge 5:1 / 4.7:1 ✓ */
-html.dark .section-label{color:var(--azul-mid)}
-html.dark .stat-num{color:var(--azul-mid)}
-html.dark .btn-outline{color:var(--azul-mid);border-color:rgba(85,120,232,.4)}
-html.dark .btn-outline:hover{background:rgba(85,120,232,.12);border-color:var(--azul-mid)}
-html.dark .pub-year-btn{color:var(--azul-mid);border-color:rgba(85,120,232,.3)}
-html.dark .pub-year-btn:hover{background:rgba(85,120,232,.12);border-color:var(--azul-mid)}
-html.dark .pub-result-count{color:var(--azul-mid)}
-html.dark .pub-result-count.filtered{background:rgba(85,120,232,.15);color:var(--azul-mid)}
-html.dark .pub-year-label{color:var(--azul-mid)}
-html.dark .hero-tag{color:var(--azul-mid);border-color:rgba(85,120,232,.4)}
-html.dark .hero-title em,html.dark .page-hero-title em{color:var(--azul-mid)}
-html.dark .prof-cargo{color:var(--azul-mid)}
-html.dark .pub-journal{color:var(--azul-mid)}
-html.dark .pub-statsbar .psi-num{color:var(--azul-mid)}
-html.dark .pub-filter-btn:not(.is-active){color:var(--azul-mid);border-color:rgba(85,120,232,.3)}
-html.dark .pub-filter-btn.pub-badge--q2:not(.is-active){color:#3ab8b0;border-color:rgba(0,180,160,.3)}
-html.dark .pub-filter-btn.pub-badge--q3:not(.is-active){color:#d4a017;border-color:rgba(160,120,0,.3)}
 /* link ativo na nav em dark mode */
-html.dark .nav-links a.ativa{color:var(--azul-mid)}
 /* divisórias de seção visíveis no dark mode */
-html.dark .divider{background:var(--azul-mid)}
 /* focus search input no dark mode */
-html.dark .pub-search:focus{box-shadow:0 0 0 3px rgba(85,120,232,.2)}
 /* focus rings: --azul (#1C4EDD) sobre fundo escuro ~2.5:1 — usa --azul-mid (~5:1) */
-html.dark :focus-visible{outline-color:var(--azul-mid)}
 /* notícias: links e datas em dark (#1C4EDD sobre #16161f ~2.3:1 → falha WCAG) */
-html.dark .noticia-card a,html.dark .noticia-card .noticia-data{color:var(--azul-mid)}
-html.dark .nm-data{color:var(--azul-mid)}
-html.dark .nm-titulo a:hover{color:var(--azul-mid)}
 /* hero count e pub hover/borders em dark mode */
-html.dark .page-hero-count{color:var(--azul-mid)}
-html.dark .pub-doi:hover{color:var(--azul-mid);border-color:var(--azul-mid)}
-html.dark .pub-citar:hover{color:var(--azul-mid);border-color:var(--azul-mid)}
-html.dark .pub-item{border-bottom-color:rgba(85,120,232,.15)}
-html.dark .pub-item:first-child{border-top-color:rgba(85,120,232,.15)}
-html.dark .pub-item:hover{background:#1a1a2c}
 /* pub-citar feedback "Copiado!" — #0a6b64 ~1.5:1 em dark → teal claro */
-html.dark .pub-citar.copiado{color:#3ab8b0;border-color:#3ab8b0;background:rgba(0,180,160,.12)}
 /* pub-year (coluna de ano em index.html), pub-reset, pub-year-label border */
-html.dark .pub-year{color:var(--azul-mid)}
-html.dark .pub-reset{color:var(--azul-mid);border-color:rgba(85,120,232,.3)}
-html.dark .pub-reset:hover{background:rgba(85,120,232,.12)}
-html.dark .pub-year-label{border-bottom-color:rgba(85,120,232,.3)}
 /* focus border do search + hover border do btn-outline */
-html.dark .pub-search:focus{border-color:var(--azul-mid)}
-html.dark .btn-outline:hover{border-color:var(--azul-mid);background:rgba(85,120,232,.1)}
-html.dark .nav-theme-btn:hover{background:rgba(85,120,232,.25);border-color:var(--azul-mid);color:var(--azul-mid)}
-html.dark .nav-theme-btn:focus-visible{outline-color:var(--azul-mid)}
-html.dark .linha-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.4)}
 /* preserva outline branco em elementos sobre fundo azul sólido */
-html.dark .noticia-link-btn:focus-visible{outline-color:rgba(255,255,255,.8)}
-html.dark .btn-join:focus-visible{outline-color:rgba(255,255,255,.8)}
 
 /* ── acessibilidade ──────────────────────────────────────────────────────── */
 .skip-link{position:absolute;top:-48px;left:1rem;background:var(--azul);color:#fff;padding:.5rem 1.25rem;border-radius:0 0 8px 8px;text-decoration:none;font-size:.85rem;font-weight:500;z-index:9999;transition:top .2s}
@@ -552,7 +452,6 @@ body.nav-open .nav-hamburger span:nth-child(3){transform:translateY(-7px) rotate
 .pub-statsbar .psi-num{color:var(--azul)}
 .pub-statsbar .psi-label{color:var(--cinza)}
 .pub-statsbar .psi-div{background:rgba(28,78,221,.18)}
-html.dark .pub-statsbar{background:#0c0c18;border-color:rgba(100,130,255,.14)}
 
 /* ── badge "Novo" em notícias ────────────────────────────────────────────── */
 .noticia-badge--novo{background:#0a6b64}
@@ -567,5 +466,4 @@ html.dark .pub-statsbar{background:#0c0c18;border-color:rgba(100,130,255,.14)}
   .tag{border:1px solid rgba(28,78,221,.45)}
   .nav-links a{color:var(--preto)}
   .nav-links a.ativa{color:var(--azul)}
-  html.dark .nav-links a{color:var(--preto)}
 }

@@ -1,6 +1,6 @@
 ---
 nome: "Prof. Dr. João Ferreira"
-cargo: "Pesquisador · EMVZ/UFBA"
+cargo: "Pesquisador · EMEVZ/UFBA"
 avatar: "JF"
 foto: ""
 descricao: "Foco em análise de pedigree, parentesco e conservação genética de raças ameaçadas no semiárido brasileiro."

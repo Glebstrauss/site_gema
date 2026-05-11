@@ -31,7 +31,7 @@ collections:
       - label: "Cargo"
         name: "cargo"
         widget: "string"
-        hint: "Ex: Coordenador · EMVZ/UFBA"
+        hint: "Ex: Coordenador · EMEVZ/UFBA"
 
       - label: "Tipo"
         name: "tipo"

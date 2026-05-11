@@ -1,6 +1,6 @@
 ---
 nome: "Prof. Dr. Maria Silva"
-cargo: "Pesquisadora · EMVZ/UFBA"
+cargo: "Pesquisadora · EMEVZ/UFBA"
 avatar: "MS"
 foto: ""
 descricao: "Especialista em herdabilidade e correlações genéticas para características de conformação e andamento em raças nordestinas."

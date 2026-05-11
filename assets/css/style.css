@@ -137,6 +137,7 @@ section{padding:6rem 3rem}
 .noticia-texto{font-size:.9rem;line-height:1.7;color:rgba(255,255,255,.75);margin-bottom:1.5rem;flex:1}
 .noticia-link-btn{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.15);color:#fff;text-decoration:none;padding:.65rem 1.25rem;border-radius:100px;font-size:.85rem;font-weight:500;width:fit-content;border:1px solid rgba(255,255,255,.25);transition:background .2s}
 .noticia-link-btn:hover{background:rgba(255,255,255,.25)}
+.noticia-link-btn:focus-visible{outline:2px solid rgba(255,255,255,.8);outline-offset:3px;border-radius:100px}
 .noticias-lista{display:flex;flex-direction:column;gap:1rem}
 .noticia-mini{border:1px solid var(--borda);border-radius:12px;padding:1.25rem 1.5rem;transition:border-color .2s,background .2s;flex:1}
 .noticia-mini:hover{border-color:rgba(28,78,221,.4);background:var(--azul-claro)}
@@ -399,6 +400,18 @@ html.dark .prof-avatar--3{background:rgba(100,50,200,.22);color:#a080e8}
 html.dark .prof-avatar--4{background:rgba(200,130,0,.22);color:#dfa030}
 /* mobile nav overlay */
 @media(max-width:600px){html.dark .nav-links{background:rgba(13,13,24,.98) !important}}
+/* contraste: --azul (#1C4EDD) sobre fundo escuro falha WCAG AA (~2.4:1);
+   --azul-mid (#5578e8) sobre #0d0d18 / #14141f atinge 5:1 / 4.7:1 ✓ */
+html.dark .section-label{color:var(--azul-mid)}
+html.dark .stat-num{color:var(--azul-mid)}
+html.dark .btn-outline{color:var(--azul-mid);border-color:rgba(85,120,232,.4)}
+html.dark .btn-outline:hover{background:rgba(85,120,232,.12);border-color:var(--azul-mid)}
+html.dark .pub-year-btn{color:var(--azul-mid);border-color:rgba(85,120,232,.3)}
+html.dark .pub-year-btn:hover{background:rgba(85,120,232,.12);border-color:var(--azul-mid)}
+html.dark .pub-result-count{color:var(--azul-mid)}
+html.dark .pub-result-count.filtered{background:rgba(85,120,232,.15);color:var(--azul-mid)}
+html.dark .pub-year-label{color:var(--azul-mid)}
+html.dark .hero-tag{color:var(--azul-mid);border-color:rgba(85,120,232,.4)}
 
 /* ── acessibilidade ──────────────────────────────────────────────────────── */
 .skip-link{position:absolute;top:-48px;left:1rem;background:var(--azul);color:#fff;padding:.5rem 1.25rem;border-radius:0 0 8px 8px;text-decoration:none;font-size:.85rem;font-weight:500;z-index:9999;transition:top .2s}

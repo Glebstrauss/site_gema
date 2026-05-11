@@ -17,7 +17,7 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
     <h1 class="page-hero-title">Publicações <em>Científicas</em></h1>
     <p class="page-hero-sub">Artigos em periódicos nacionais e internacionais em genética quantitativa, genômica e melhoramento de equídeos brasileiros.</p>
     <p class="page-hero-count">{{ site.data.publicacoes.items | size }} publicações em {{ pub_periodicos }} periódicos</p>
-    {% assign q1_count = site.data.publicacoes.items | where: "qualis", "Q1" | size %}
+    {% assign q1_count = pub_q1_total %}
     {% assign q2_count = site.data.publicacoes.items | where: "qualis", "Q2" | size %}
     {% assign q3_count = site.data.publicacoes.items | where: "qualis", "Q3" | size %}
     {% if q1_count > 0 or q2_count > 0 or q3_count > 0 %}

@@ -427,6 +427,17 @@ html.dark .divider{background:var(--azul-mid)}
 html.dark .pub-search:focus{box-shadow:0 0 0 3px rgba(85,120,232,.2)}
 /* focus rings: --azul (#1C4EDD) sobre fundo escuro ~2.5:1 — usa --azul-mid (~5:1) */
 html.dark :focus-visible{outline-color:var(--azul-mid)}
+/* notícias: links e datas em dark (#1C4EDD sobre #16161f ~2.3:1 → falha WCAG) */
+html.dark .noticia-card a,html.dark .noticia-card .noticia-data{color:var(--azul-mid)}
+html.dark .nm-data{color:var(--azul-mid)}
+html.dark .nm-titulo a:hover{color:var(--azul-mid)}
+/* hero count e pub hover/borders em dark mode */
+html.dark .page-hero-count{color:var(--azul-mid)}
+html.dark .pub-doi:hover{color:var(--azul-mid);border-color:var(--azul-mid)}
+html.dark .pub-citar:hover{color:var(--azul-mid);border-color:var(--azul-mid)}
+html.dark .pub-item{border-bottom-color:rgba(85,120,232,.15)}
+html.dark .pub-item:first-child{border-top-color:rgba(85,120,232,.15)}
+html.dark .pub-item:hover{background:#1a1a2c}
 /* preserva outline branco em elementos sobre fundo azul sólido */
 html.dark .noticia-link-btn:focus-visible{outline-color:rgba(255,255,255,.8)}
 html.dark .btn-join:focus-visible{outline-color:rgba(255,255,255,.8)}

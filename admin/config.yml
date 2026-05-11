@@ -2,7 +2,6 @@ backend:
   name: github
   repo: Glebstrauss/site_gema
   branch: master
-  app_id: Ov23lisswKeYlP9Kp0C1
 
 # Onde as fotos são salvas no repositório
 media_folder: "assets/img/professores"

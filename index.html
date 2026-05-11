@@ -136,7 +136,7 @@ description: "Grupo de pesquisa em genética quantitativa, genômica e melhorame
       {% assign premios_recentes = site.data.premios.items | sort: "ano" | reverse | limit: 3 %}
       {% for premio in premios_recentes %}
       <div class="premio-card">
-        <div class="premio-topo"><div class="premio-icon">{{ premio.icone }}</div><div class="premio-ano">{{ premio.ano }}</div></div>
+        <div class="premio-topo"><div class="premio-icon" aria-hidden="true">{{ premio.icone }}</div><time class="premio-ano" datetime="{{ premio.ano }}">{{ premio.ano }}</time></div>
         <div class="premio-nome">{{ premio.nome }}</div>
         <div class="premio-entidade">{{ premio.entidade }}</div>
         <p class="premio-desc">{{ premio.descricao }}</p>

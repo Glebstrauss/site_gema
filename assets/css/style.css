@@ -328,6 +328,7 @@ section[id]{scroll-margin-top:84px}
 /* ── botão de tema ────────────────────────────────────────────────────────── */
 .nav-theme-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:none;border:1px solid var(--borda);cursor:pointer;color:var(--cinza);transition:background .2s,border-color .2s,color .2s;flex-shrink:0}
 .nav-theme-btn:hover{background:var(--azul-claro);border-color:var(--azul);color:var(--azul)}
+.nav-theme-btn:focus-visible{outline:2px solid var(--azul);outline-offset:3px;border-radius:50%}
 .icon-moon{display:none}
 html.dark .icon-sun{display:none}
 html.dark .icon-moon{display:block}

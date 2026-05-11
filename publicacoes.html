@@ -10,7 +10,7 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
 {% assign pub_q1_total    = site.data.publicacoes.items | where: "qualis", "Q1" | size %}
 {% assign pub_periodicos  = site.data.publicacoes.items | map: "periodico" | uniq | size %}
 
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     <div class="section-label">Produção Científica</div>
     <div class="divider"></div>
@@ -28,7 +28,7 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
     </p>
     {% endif %}
   </div>
-</div>
+</header>
 
 <div class="pub-statsbar">
   <div class="container">
@@ -51,7 +51,7 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
   </div>
 </div>
 
-<section style="background:var(--branco)">
+<section aria-label="Publicações científicas" style="background:var(--branco)">
   <div class="container">
 
     {% assign anos = site.data.publicacoes.items | map: "ano" | uniq | sort | reverse %}
@@ -75,7 +75,7 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
         <button class="pub-filter-btn pub-badge--q2" data-filter="Q2">Q2</button>
         <button class="pub-filter-btn pub-badge--q3" data-filter="Q3">Q3</button>
       </div>
-      <button class="pub-print-btn" onclick="window.print()" aria-label="Imprimir lista de publicações">
+      <button class="pub-print-btn" id="pub-print-btn" aria-label="Imprimir lista de publicações">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
         Imprimir
       </button>
@@ -255,6 +255,10 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
 
   // Esconde o contador inicialmente (só aparece ao filtrar)
   if (countEl) countEl.style.display = 'none';
+
+  // Botão imprimir
+  var printBtn = document.getElementById('pub-print-btn');
+  if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
 })();
 
 // ── Copiar citação ─────────────────────────────────────────────────────────

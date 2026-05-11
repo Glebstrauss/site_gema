@@ -4,7 +4,7 @@ title: "Prêmios"
 description: "Prêmios e distinções conquistados pelo GEMA em eventos científicos nacionais e internacionais"
 ---
 
-<div class="page-hero" style="background:var(--preto);border-bottom:1px solid rgba(28,78,221,.2)">
+<header class="page-hero" style="background:var(--preto);border-bottom:1px solid rgba(28,78,221,.2)">
   <div class="container">
     <div class="section-label" style="color:var(--azul-mid)">Reconhecimento</div>
     <div class="divider" style="background:var(--azul-mid)"></div>
@@ -12,7 +12,7 @@ description: "Prêmios e distinções conquistados pelo GEMA em eventos científ
     <p class="page-hero-sub" style="color:rgba(255,255,255,.5)">Reconhecimentos obtidos em eventos científicos nacionais, congressos de zootecnia e instituições de fomento à pesquisa.</p>
     <p class="page-hero-count" style="color:var(--azul-mid)">{{ site.data.premios.items | size }} prêmios e distinções</p>
   </div>
-</div>
+</header>
 
 {% assign anos_premios = site.data.premios.items | map: "ano" | uniq | sort | reverse %}
 {% assign anos_asc    = site.data.premios.items | map: "ano" | uniq | sort %}

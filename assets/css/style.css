@@ -219,6 +219,8 @@ section[id]{scroll-margin-top:84px}
 .pub-filter-btn.pub-badge--q3{color:#7a5f00;border-color:rgba(160,120,0,.3)}
 .pub-filter-btn.pub-badge--q3.is-active{background:#7a5f00;color:#fff;border-color:#7a5f00}
 .pub-filter-btn:focus-visible{outline:2px solid var(--azul);outline-offset:3px;border-radius:100px}
+.pub-print-btn:focus-visible{outline:2px solid var(--azul);outline-offset:3px;border-radius:100px}
+.pub-reset:focus-visible{outline:2px solid var(--azul);outline-offset:3px;border-radius:100px}
 .pub-year-btn:focus-visible{outline:2px solid var(--azul);outline-offset:3px;border-radius:100px}
 .btn-primary:focus-visible,.btn-outline:focus-visible{outline:2px solid var(--azul);outline-offset:3px;border-radius:100px}
 .btn-join:focus-visible{outline:2px solid rgba(255,255,255,.8);outline-offset:3px;border-radius:100px}
@@ -248,7 +250,8 @@ section[id]{scroll-margin-top:84px}
 .psi-div{width:1px;height:2.5rem;background:rgba(255,255,255,.08);margin-right:2.5rem;flex-shrink:0}
 
 /* ── contador de resultados ──────────────────────────────────────────────── */
-.pub-result-count{font-size:.8rem;font-weight:500;color:var(--azul);margin-bottom:1.25rem;letter-spacing:.02em}
+.pub-result-count{font-size:.8rem;font-weight:500;color:var(--azul);margin-bottom:1.25rem;letter-spacing:.02em;transition:background .2s,color .2s,padding .2s}
+.pub-result-count.filtered{background:var(--azul-claro);color:var(--azul-escuro);padding:.2rem .75rem;border-radius:100px;display:inline-block}
 
 /* ano ativo no scrollspy */
 .pub-year-btn.is-active{background:var(--azul);color:#fff;border-color:var(--azul)}

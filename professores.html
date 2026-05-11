@@ -4,7 +4,7 @@ title: "Professores"
 description: "Conheça os professores e pesquisadores do GEMA, grupo de melhoramento animal da EMVZ/UFBA"
 ---
 
-<div class="page-hero">
+<header class="page-hero">
   <div class="container">
     <div class="section-label">Equipe</div>
     <div class="divider"></div>
@@ -14,7 +14,7 @@ description: "Conheça os professores e pesquisadores do GEMA, grupo de melhoram
     {% assign n_est = site.professores | where: "tipo", "estudante" | size %}
     <p class="page-hero-count">{{ n_doc }} docente{% if n_doc != 1 %}s{% endif %} · {{ n_est }} estudante{% if n_est != 1 %}s{% endif %} de pós-graduação</p>
   </div>
-</div>
+</header>
 
 <section aria-label="Corpo Docente" style="background:var(--cinza-claro)">
   <div class="container">

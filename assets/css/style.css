@@ -293,7 +293,8 @@ section[id]{scroll-margin-top:84px}
 @media print{
   nav,footer,.pub-filter-bar,.pub-year-nav,.back-to-top,
   .btn-primary,.btn-outline,.pub-print-btn,.linha-deco,.page-hero .hero-actions,
-  .skip-link,.pub-citar,.nav-theme-btn,.hero-actions,.premio-year-nav{display:none !important}
+  .skip-link,.pub-citar,.nav-theme-btn,.hero-actions,.premio-year-nav,
+  .premios-statsbar,.pub-statsbar,.section-join,.noticia-link-btn{display:none !important}
   body{font-size:10.5pt;color:#000;background:#fff}
   .page-hero{padding:1rem 0;background:#fff !important;border:none !important;color:#000 !important}
   .page-hero-title,.page-hero-sub,.page-hero-count{color:#000 !important}
@@ -303,7 +304,7 @@ section[id]{scroll-margin-top:84px}
   .pub-item{break-inside:avoid;border-bottom:1px solid #ddd !important;background:none !important}
   .pub-item:hover{background:none}
   .pub-year-group{page-break-inside:avoid}
-  .pub-year-label{border-bottom:1.5pt solid #000;font-size:12pt}
+  .pub-year-label{border-bottom:1.5pt solid #000;font-size:12pt;color:#000}
   a{color:#000;text-decoration:none}
   .pub-doi::after{content:" (" attr(href) ")";font-size:.72em;color:#444}
   .pub-badge{border:1px solid #999 !important;background:#f0f0f0 !important;color:#000 !important}
@@ -313,10 +314,23 @@ section[id]{scroll-margin-top:84px}
   .prof-card::after{display:none}
   .prof-avatar{background:#f0f0f0 !important;color:#333 !important}
   .tag{background:#f0f0f0 !important;color:#333 !important;border:1px solid #ddd}
-  .join-section{display:none !important}
   .linhas-grid{page-break-before:auto}
   .linha-card{break-inside:avoid;box-shadow:none !important}
   .linha-num{color:#ddd !important}
+  /* prêmios */
+  .premio-card{break-inside:avoid;background:#fff !important;border:1px solid #ddd !important}
+  .premio-card::before{display:none}
+  .premio-nome{color:#000 !important;font-size:10pt}
+  .premio-entidade{color:#444 !important}
+  .premio-desc{color:#555 !important}
+  .premio-ano{color:#666 !important}
+  /* notícias */
+  .noticia-card{break-inside:avoid;box-shadow:none !important;transform:none !important;border:1px solid #ddd}
+  .noticia-destaque{background:#f5f5f3 !important;color:#000 !important;border-radius:0}
+  .noticia-titulo,.noticia-data,.nm-titulo,.nm-data,.nd-data{color:#000 !important}
+  .noticia-texto,.nm-texto,.noticia-card p{color:#444 !important}
+  .noticias-grid{grid-template-columns:1fr}
+  .noticias-all{grid-template-columns:repeat(2,1fr)}
 }
 
 /* ── 404 ─────────────────────────────────────────────────────────────────── */
@@ -349,6 +363,7 @@ html.dark .noticia-mini{background:#16161f;border-color:rgba(100,130,255,.15)}
 html.dark .noticia-mini:hover{background:#1c1c2e;border-color:rgba(100,130,255,.3)}
 html.dark .noticia-card{background:#16161f;border-color:rgba(100,130,255,.15)}
 html.dark .noticia-card:hover{box-shadow:0 10px 36px rgba(0,0,0,.45)}
+html.dark .premio-card:hover{background:rgba(28,78,221,.18) !important;border-color:var(--azul-mid)}
 html.dark .noticia-card--destaque{background:rgba(28,78,221,.18) !important;border-color:rgba(28,78,221,.35) !important}
 html.dark .pub-item:hover{background:#16161f}
 html.dark .pub-filter-bar{background:var(--cinza-claro);border-color:var(--borda)}

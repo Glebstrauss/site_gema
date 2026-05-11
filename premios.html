@@ -50,9 +50,9 @@ description: "Prêmios e distinções conquistados pelo GEMA em eventos científ
   {% assign premios_ano = site.data.premios.items | where: "ano", ano %}
   {% assign bg = "var(--preto)" %}
   {% if forloop.even %}{% assign bg = "#111116" %}{% endif %}
-<section id="premio-{{ ano }}" style="background:{{ bg }}">
+<section id="premio-{{ ano }}" aria-labelledby="heading-premio-{{ ano }}" style="background:{{ bg }}">
   <div class="container">
-    <h2 class="section-label" style="color:var(--azul-mid)"><time datetime="{{ ano }}">{{ ano }}</time></h2>
+    <h2 id="heading-premio-{{ ano }}" class="section-label" style="color:var(--azul-mid)"><time datetime="{{ ano }}">{{ ano }}</time></h2>
     <div class="divider" style="background:var(--azul-mid)"></div>
     <div class="premio-grid">
       {% for premio in premios_ano %}

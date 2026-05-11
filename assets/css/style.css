@@ -279,7 +279,7 @@ section[id]{scroll-margin-top:84px}
 .btn-join--outline{background:transparent;border-color:rgba(255,255,255,.35)}
 .btn-join--outline:hover{background:rgba(255,255,255,.1)}
 .join-section{text-align:center}
-.join-section .divider{margin:1rem auto 1.25rem}
+.join-section .divider{margin:1rem auto 1.25rem;background:rgba(255,255,255,.35)}
 .join-section .section-label{justify-content:center;display:flex;color:rgba(255,255,255,.55)}
 .join-section .section-title{color:#fff;margin-bottom:.9rem}
 .join-section .section-title em{color:rgba(255,255,255,.75)}
@@ -412,6 +412,13 @@ html.dark .pub-result-count{color:var(--azul-mid)}
 html.dark .pub-result-count.filtered{background:rgba(85,120,232,.15);color:var(--azul-mid)}
 html.dark .pub-year-label{color:var(--azul-mid)}
 html.dark .hero-tag{color:var(--azul-mid);border-color:rgba(85,120,232,.4)}
+html.dark .hero-title em,html.dark .page-hero-title em{color:var(--azul-mid)}
+html.dark .prof-cargo{color:var(--azul-mid)}
+html.dark .pub-journal{color:var(--azul-mid)}
+html.dark .pub-statsbar .psi-num{color:var(--azul-mid)}
+html.dark .pub-filter-btn:not(.is-active){color:var(--azul-mid);border-color:rgba(85,120,232,.3)}
+html.dark .pub-filter-btn.pub-badge--q2:not(.is-active){color:#3ab8b0;border-color:rgba(0,180,160,.3)}
+html.dark .pub-filter-btn.pub-badge--q3:not(.is-active){color:#d4a017;border-color:rgba(160,120,0,.3)}
 
 /* ── acessibilidade ──────────────────────────────────────────────────────── */
 .skip-link{position:absolute;top:-48px;left:1rem;background:var(--azul);color:#fff;padding:.5rem 1.25rem;border-radius:0 0 8px 8px;text-decoration:none;font-size:.85rem;font-weight:500;z-index:9999;transition:top .2s}

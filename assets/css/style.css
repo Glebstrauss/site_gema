@@ -269,6 +269,21 @@ section[id]{scroll-margin-top:84px}
 .pub-print-btn{display:inline-flex;align-items:center;gap:.35rem;background:none;border:1px solid var(--borda);border-radius:100px;padding:.3rem .85rem;font-size:.78rem;color:var(--cinza);cursor:pointer;font-family:inherit;transition:border-color .2s,color .2s;white-space:nowrap}
 .pub-print-btn:hover{border-color:var(--preto);color:var(--preto)}
 
+/* ── cards de navegação rápida (homepage) ───────────────────────────────── */
+.home-nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem;margin-top:2.5rem}
+.home-nav-card{display:flex;flex-direction:column;border:1px solid var(--borda);border-radius:16px;padding:2rem;text-decoration:none;color:inherit;background:var(--branco);transition:transform .2s,box-shadow .2s,border-color .2s}
+.home-nav-card:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(28,78,221,.09);border-color:rgba(28,78,221,.3)}
+.home-nav-icon{font-size:2rem;margin-bottom:1rem;line-height:1}
+.home-nav-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--preto);margin-bottom:.5rem}
+.home-nav-desc{font-size:.875rem;color:var(--cinza);line-height:1.65;flex:1;margin-bottom:1.25rem}
+.home-nav-arrow{font-size:.85rem;color:var(--azul);font-weight:500;margin-top:auto}
+html.dark .home-nav-card{background:#16161f;border-color:rgba(100,130,255,.15)}
+html.dark .home-nav-card:hover{box-shadow:0 10px 36px rgba(0,0,0,.4);border-color:rgba(100,130,255,.35)}
+html.dark .home-nav-arrow{color:var(--azul-mid)}
+@media(max-width:600px){.home-nav-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.home-nav-grid{grid-template-columns:1fr}}
+@media print{.home-nav-grid{grid-template-columns:repeat(2,1fr)}.home-nav-card{border:1px solid #ddd !important;box-shadow:none !important}}
+
 /* ── seção join (CTA recrutamento) ──────────────────────────────────────── */
 .section-join{padding:5rem 3rem}
 @media(max-width:600px){.section-join{padding:4rem 1.25rem}}

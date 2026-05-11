@@ -73,113 +73,39 @@ description: "Grupo de pesquisa em genética quantitativa, genômica e melhorame
         <p class="linha-desc">PCA, medidas morfométricas e fenotípicas para descrição e conservação de raças localmente adaptadas como o Pêga e o Campolina.</p>
       </div>
     </div>
-    <div style="margin-top:2rem">
-      <a href="{{ '/professores.html' | relative_url }}#pesquisa" class="btn-outline">Ver detalhes das linhas →</a>
-    </div>
   </div>
 </section>
 
-<section id="professores" aria-label="Professores e pesquisadores" style="background:var(--cinza-claro)">
+<section aria-label="Explorar o site" style="background:var(--cinza-claro)">
   <div class="container">
-    <div class="section-label">Equipe</div>
+    <div class="section-label">Explorar</div>
     <div class="divider"></div>
-    <h2 class="section-title">Professores &amp; Pesquisadores</h2>
-    <p class="section-desc">Pesquisadores dedicados à genética quantitativa, melhoramento animal e genômica de raças brasileiras.</p>
-    <div class="prof-grid">
-      {% assign todos = site.professores | sort: "ordem" | limit: 4 %}
-      {% for prof in todos %}
-        {% include prof-card.html prof=prof %}
-      {% endfor %}
-    </div>
-    <div style="margin-top:2rem">
-      <a href="{{ '/professores.html' | relative_url }}" class="btn-outline">Ver toda a equipe →</a>
-    </div>
-  </div>
-</section>
-
-<section id="publicacoes" aria-label="Publicações recentes" style="background:var(--branco)">
-  <div class="container">
-    <div class="section-label">Produção Científica</div>
-    <div class="divider"></div>
-    <h2 class="section-title">Publicações Recentes</h2>
-    <p class="section-desc">Artigos em periódicos nacionais e internacionais em genética quantitativa e melhoramento de equídeos.</p>
-    <div class="pub-list" role="list">
-      {% assign pubs = site.data.publicacoes.items | sort: "ano" | reverse | limit: 4 %}
-      {% for pub in pubs %}
-      <div class="pub-item" role="listitem">
-        <div class="pub-year">{{ pub.ano }}</div>
-        <div class="pub-body">
-          <div class="pub-title">{{ pub.titulo }}</div>
-          <div class="pub-authors">{{ pub.autores }}</div>
-          <div class="pub-journal">
-            {{ pub.periodico }}
-            {% if pub.qualis != "" %}<span class="pub-badge pub-badge--{{ pub.qualis | downcase }}" aria-label="Qualis {{ pub.qualis }}">{{ pub.qualis }}</span>{% endif %}
-          </div>
-          {% if pub.doi != "" %}<a href="{{ pub.doi }}" class="pub-doi" target="_blank" rel="noopener noreferrer" aria-label="Abrir no DOI (nova aba): {{ pub.titulo | truncate: 80 | escape }}">↗ DOI</a>{% endif %}
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    <div style="margin-top:2rem">
-      <a href="{{ '/publicacoes.html' | relative_url }}" class="btn-outline">Ver todas as publicações →</a>
-    </div>
-  </div>
-</section>
-
-<section id="premios" aria-label="Prêmios e distinções" style="background:var(--preto)">
-  <div class="container">
-    <div class="section-label" style="color:var(--azul-mid)">Reconhecimento</div>
-    <div class="divider" style="background:var(--azul-mid)"></div>
-    <h2 class="section-title" style="color:var(--branco)">Prêmios &amp; Distinções</h2>
-    <p class="section-desc" style="color:rgba(255,255,255,.5)">Reconhecimentos obtidos em eventos científicos e instituições de fomento à pesquisa.</p>
-    <div class="premio-grid">
-      {% assign premios_recentes = site.data.premios.items | sort: "ano" | reverse | limit: 3 %}
-      {% for premio in premios_recentes %}
-      <div class="premio-card">
-        <div class="premio-topo"><div class="premio-icon" aria-hidden="true">{{ premio.icone }}</div><time class="premio-ano" datetime="{{ premio.ano }}">{{ premio.ano }}</time></div>
-        <h3 class="premio-nome">{{ premio.nome }}</h3>
-        <div class="premio-entidade">{{ premio.entidade }}</div>
-        <p class="premio-desc">{{ premio.descricao }}</p>
-      </div>
-      {% endfor %}
-    </div>
-    <div style="margin-top:2rem">
-      <a href="{{ '/premios.html' | relative_url }}" class="btn-outline" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)">Ver todos os prêmios →</a>
-    </div>
-  </div>
-</section>
-
-<section id="noticias" aria-label="Notícias do grupo" style="background:var(--branco)">
-  <div class="container">
-    <div class="section-label">Últimas</div>
-    <div class="divider"></div>
-    <h2 class="section-title">Notícias do Grupo</h2>
-    <p class="section-desc">Atualizações sobre projetos, publicações e eventos do GEMA.</p>
-    {% assign destaque = site.data.noticias.items | where: "destaque", true | first %}
-    {% assign secundarias = site.data.noticias.items | where: "destaque", false | limit: 3 %}
-    <div class="noticias-grid">
-      {% if destaque %}
-      <div class="noticia-destaque">
-        <div>
-          <div class="noticia-data nd-data">{{ destaque.data }}</div>
-          <h3 class="noticia-titulo">{{ destaque.titulo }}</h3>
-          <p class="noticia-texto">{{ destaque.texto }}</p>
-        </div>
-        {% if destaque.link != "" %}<a href="{{ destaque.link }}" class="noticia-link-btn">Ler mais →</a>{% endif %}
-      </div>
-      {% endif %}
-      <div class="noticias-lista">
-        {% for noticia in secundarias %}
-        <div class="noticia-mini">
-          <div class="noticia-data nm-data">{{ noticia.data }}</div>
-          <h3 class="nm-titulo">{% if noticia.link != "" %}<a href="{{ noticia.link }}">{{ noticia.titulo }}</a>{% else %}{{ noticia.titulo }}{% endif %}</h3>
-          <p class="nm-texto">{{ noticia.texto | truncatewords: 16 }}</p>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <div style="margin-top:2rem">
-      <a href="{{ '/noticias.html' | relative_url }}" class="btn-outline">Ver todas as notícias →</a>
+    <h2 class="section-title">Conheça o GEMA</h2>
+    <div class="home-nav-grid">
+      <a href="{{ '/professores.html' | relative_url }}" class="home-nav-card">
+        <div class="home-nav-icon" aria-hidden="true">👥</div>
+        <div class="home-nav-title">Professores</div>
+        <p class="home-nav-desc">Docentes e estudantes de pós-graduação dedicados à genética quantitativa e melhoramento animal.</p>
+        <span class="home-nav-arrow">Ver equipe →</span>
+      </a>
+      <a href="{{ '/publicacoes.html' | relative_url }}" class="home-nav-card">
+        <div class="home-nav-icon" aria-hidden="true">📄</div>
+        <div class="home-nav-title">Publicações</div>
+        <p class="home-nav-desc">Artigos em periódicos nacionais e internacionais, com filtro por Qualis e busca por título ou autor.</p>
+        <span class="home-nav-arrow">Ver publicações →</span>
+      </a>
+      <a href="{{ '/premios.html' | relative_url }}" class="home-nav-card">
+        <div class="home-nav-icon" aria-hidden="true">🏆</div>
+        <div class="home-nav-title">Prêmios</div>
+        <p class="home-nav-desc">Reconhecimentos e distinções conquistados em eventos científicos e instituições de fomento.</p>
+        <span class="home-nav-arrow">Ver prêmios →</span>
+      </a>
+      <a href="{{ '/noticias.html' | relative_url }}" class="home-nav-card">
+        <div class="home-nav-icon" aria-hidden="true">📰</div>
+        <div class="home-nav-title">Notícias</div>
+        <p class="home-nav-desc">Atualizações sobre projetos, publicações, apresentações e eventos do grupo.</p>
+        <span class="home-nav-arrow">Ver notícias →</span>
+      </a>
     </div>
   </div>
 </section>

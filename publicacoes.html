@@ -7,7 +7,6 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
 {% assign _pub_anos_asc   = site.data.publicacoes.items | map: "ano" | uniq | sort %}
 {% assign pub_ano_min     = _pub_anos_asc | first %}
 {% assign pub_ano_max     = _pub_anos_asc | last %}
-{% assign pub_q1_total    = site.data.publicacoes.items | where: "qualis", "Q1" | size %}
 {% assign pub_periodicos  = site.data.publicacoes.items | map: "periodico" | uniq | size %}
 
 <header class="page-hero">
@@ -17,16 +16,6 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
     <h1 class="page-hero-title">Publicações <em>Científicas</em></h1>
     <p class="page-hero-sub">Artigos em periódicos nacionais e internacionais em genética quantitativa, genômica e melhoramento de equídeos brasileiros.</p>
     <p class="page-hero-count">{{ site.data.publicacoes.items | size }} publicações em {{ pub_periodicos }} periódicos</p>
-    {% assign q1_count = pub_q1_total %}
-    {% assign q2_count = site.data.publicacoes.items | where: "qualis", "Q2" | size %}
-    {% assign q3_count = site.data.publicacoes.items | where: "qualis", "Q3" | size %}
-    {% if q1_count > 0 or q2_count > 0 or q3_count > 0 %}
-    <p class="page-hero-qualis">
-      {% if q1_count > 0 %}<span class="pub-badge pub-badge--q1" aria-label="Qualis Q1">Q1</span> {{ q1_count }}{% endif %}
-      {% if q2_count > 0 %}<span class="pub-badge pub-badge--q2" aria-label="Qualis Q2">Q2</span> {{ q2_count }}{% endif %}
-      {% if q3_count > 0 %}<span class="pub-badge pub-badge--q3" aria-label="Qualis Q3">Q3</span> {{ q3_count }}{% endif %}
-    </p>
-    {% endif %}
   </div>
 </header>
 
@@ -41,11 +30,6 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
       <div class="psi">
         <span class="psi-num">{{ pub_ano_min }}–{{ pub_ano_max }}</span>
         <span class="psi-label">Período</span>
-      </div>
-      <div class="psi-div" aria-hidden="true"></div>
-      <div class="psi">
-        <span class="psi-num">{{ pub_q1_total }}</span>
-        <span class="psi-label">Artigos Q1</span>
       </div>
     </div>
   </div>
@@ -68,12 +52,6 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
         <button class="pub-search-clear" id="pub-search-clear" type="button" aria-label="Limpar busca">
           <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
-      </div>
-      <div class="pub-filter-qualis" role="group" aria-label="Filtrar por Qualis">
-        <button class="pub-filter-btn is-active" data-filter="">Todos</button>
-        <button class="pub-filter-btn pub-badge--q1" data-filter="Q1">Q1</button>
-        <button class="pub-filter-btn pub-badge--q2" data-filter="Q2">Q2</button>
-        <button class="pub-filter-btn pub-badge--q3" data-filter="Q3">Q3</button>
       </div>
       <button class="pub-print-btn" id="pub-print-btn" aria-label="Imprimir lista de publicações">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -109,7 +87,6 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
              data-titulo="{{ pub.titulo | downcase | escape }}"
              data-autores="{{ pub.autores | downcase | escape }}"
              data-periodico="{{ pub.periodico | downcase | escape }}"
-             data-qualis="{{ pub.qualis }}"
              data-ano="{{ pub.ano }}">
           <div class="pub-year">{{ pub.ano }}</div>
           <div class="pub-body">
@@ -117,7 +94,6 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
             <div class="pub-authors">{{ pub.autores }}</div>
             <div class="pub-journal">
               {{ pub.periodico }}
-              {% if pub.qualis != "" %}<span class="pub-badge pub-badge--{{ pub.qualis | downcase }}" aria-label="Qualis {{ pub.qualis }}">{{ pub.qualis }}</span>{% endif %}
             </div>
             <div class="pub-actions">
               {% if pub.doi != "" %}<a href="{{ pub.doi }}" class="pub-doi" target="_blank" rel="noopener noreferrer" aria-label="Abrir no DOI (nova aba): {{ pub.titulo | truncate: 80 | escape }}">↗ DOI</a>{% endif %}
@@ -145,11 +121,9 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
   var noRes      = document.getElementById('pub-no-results');
   var yearNav    = document.getElementById('pub-year-nav');
   var countEl    = document.getElementById('pub-count');
-  var filterBtns = Array.from(document.querySelectorAll('.pub-filter-btn'));
-  var items      = Array.from(document.querySelectorAll('.pub-item'));
-  var groups     = Array.from(document.querySelectorAll('.pub-year-group'));
-  var activeQ    = '';
-  var total      = items.length;
+  var items  = Array.from(document.querySelectorAll('.pub-item'));
+  var groups = Array.from(document.querySelectorAll('.pub-year-group'));
+  var total  = items.length;
 
   // ── Estado do campo de busca (mostra/oculta botão × e hint /) ────────────
   function updateSearchWrap() {
@@ -171,10 +145,9 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
     var matched = 0;
 
     items.forEach(function (item) {
-      var ok = (!q || item.dataset.titulo.includes(q)
-                   || item.dataset.autores.includes(q)
-                   || item.dataset.periodico.includes(q))
-            && (!activeQ || item.dataset.qualis === activeQ);
+      var ok = !q || item.dataset.titulo.includes(q)
+                  || item.dataset.autores.includes(q)
+                  || item.dataset.periodico.includes(q);
       item.classList.toggle('pub-hidden', !ok);
       if (ok) matched++;
     });
@@ -184,7 +157,7 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
         !g.querySelectorAll('.pub-item:not(.pub-hidden)').length);
     });
 
-    var filtering = !!(q || activeQ);
+    var filtering = !!q;
     if (yearNav)  yearNav.style.display  = filtering ? 'none' : '';
     if (countEl)  countEl.style.display  = filtering ? ''     : 'none';
     if (noRes)    noRes.classList.toggle('visible', matched === 0);
@@ -194,9 +167,6 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
   function reset() {
     if (search) search.value = '';
     updateSearchWrap();
-    activeQ = '';
-    filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
-    if (filterBtns[0]) filterBtns[0].classList.add('is-active');
     applyFilter();
     if (search) search.focus();
   }
@@ -214,15 +184,6 @@ description: "Produção científica do GEMA em genética quantitativa, genômic
       if (search) search.focus();
     });
   }
-
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
-      btn.classList.add('is-active');
-      activeQ = btn.dataset.filter;
-      applyFilter();
-    });
-  });
 
   // ── Atalho "/" — foca o campo de busca ───────────────────────────────────
   document.addEventListener('keydown', function (e) {

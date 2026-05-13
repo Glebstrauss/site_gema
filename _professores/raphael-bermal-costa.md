@@ -1,16 +1,15 @@
 ---
-layout: null
-nome: "Prof. Dr. Raphael Bermal Costa"
-cargo: "Professor · EMEVZ/UFBA"
-tipo: "docente"
-avatar: "RC"
-foto: ""
-descricao: "Genética quantitativa e genômica de animais domésticos."
+nome: Prof. Dr. Raphael Bermal Costa
+cargo: Professor · EMEVZ/UFBA
+tipo: docente
+foto: ''
+avatar: RC
+descricao: Genética quantitativa e genômica de animais domésticos.
 tags:
   - Genética Quantitativa
   - Genômica
-  - Animais Domésticos
-lattes: ""
-email: ""
+lattes: http://lattes.cnpq.br/3052579386325495
+email: raphael.bermal@ufba.br
 ordem: 3
+layout: null
 ---

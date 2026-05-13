@@ -1,16 +1,15 @@
 ---
-layout: null
-nome: "Prof. Dr. Luís Fernando B. Pinto"
-cargo: "Professor · EMEVZ/UFBA"
-tipo: "docente"
-avatar: "LP"
-foto: ""
-descricao: "Bioestatística aplicada à genômica e ao melhoramento animal."
+nome: Prof. Dr. Luís Fernando B. Pinto
+cargo: Professor · EMEVZ/UFBA
+tipo: docente
+foto: ''
+avatar: LP
+descricao: Bioestatística aplicada à genômica e ao melhoramento animal.
 tags:
   - Bioestatística
   - Genômica
-  - Melhoramento Animal
-lattes: ""
-email: ""
+lattes: http://lattes.cnpq.br/2472365926713302
+email: luisfbp@ufba.br
 ordem: 1
+layout: null
 ---

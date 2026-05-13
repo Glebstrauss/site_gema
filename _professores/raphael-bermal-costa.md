@@ -2,7 +2,7 @@
 nome: Prof. Dr. Raphael Bermal Costa
 cargo: Professor · EMEVZ/UFBA
 tipo: docente
-foto: ''
+foto: /assets/img/professores/6.png
 avatar: RC
 descricao: Genética quantitativa e genômica de animais domésticos.
 tags:

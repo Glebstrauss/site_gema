@@ -116,9 +116,10 @@ section{padding:6rem 3rem}
 .page-hero-qualis{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
 
 /* prêmios */
-section[id^="premio-"]{padding-top:2.5rem;padding-bottom:2.5rem}
-.premio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem}
-.premio-card{border:1px solid rgba(28,78,221,.3);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:border-color .2s,background .2s}
+section[id^="premio-"]{padding-top:2.5rem;padding-bottom:2.5rem;scroll-margin-top:120px}
+.premio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.premio-card{border:1px solid rgba(28,78,221,.3);border-radius:16px;padding:1.75rem;position:relative;overflow:hidden;transition:border-color .2s,background .2s,box-shadow .2s}
+.premio-card:hover{box-shadow:0 8px 28px rgba(28,78,221,.1)}
 .premio-card:hover{border-color:var(--azul-mid);background:rgba(28,78,221,.08)}
 .premio-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--azul),var(--azul-mid))}
 .premio-topo{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem}
@@ -235,23 +236,26 @@ section[id]{scroll-margin-top:84px}
 .pub-year-group .pub-item .pub-year{display:none}
 
 /* ── navegação por ano de prêmios ────────────────────────────────────────── */
-.premio-year-nav{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 3rem;background:var(--branco);border-bottom:1px solid var(--borda)}
+.premio-year-nav{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 3rem;background:var(--branco);border-bottom:1px solid var(--borda);position:sticky;top:68px;z-index:80}
 .premio-year-nav .pub-year-btn{border-color:rgba(28,78,221,.25);color:var(--azul)}
 .premio-year-nav .pub-year-btn:hover{background:var(--azul-claro);border-color:var(--azul)}
 .pub-year-count{font-size:.72em;opacity:.6;font-family:'DM Sans',sans-serif}
 .premio-year-nav .pub-year-btn.is-active{background:var(--azul);color:#fff;border-color:var(--azul)}
-@media(max-width:600px){.premio-year-nav{padding:.75rem 1.25rem}}
+@media(max-width:600px){
+  .premio-year-nav{padding:.6rem 1.25rem;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:.4rem}
+  .premio-year-nav::-webkit-scrollbar{display:none}
+}
 
 /* ── barra de stats de prêmios ───────────────────────────────────────────── */
 .premios-statsbar{background:var(--cinza-claro);border-bottom:1px solid var(--borda);padding:.1rem 0}
 .premios-statsbar .psi-num{color:var(--azul)}
 .premios-statsbar .psi-label{color:var(--cinza)}
 .premios-statsbar .psi-div{background:rgba(28,78,221,.18)}
-.premios-stats{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:.75rem 0}
+.premios-stats{display:flex;align-items:center;gap:0;padding:.75rem 0}
 .psi{display:flex;flex-direction:column;gap:.18rem;padding:1rem 2.5rem 1rem 0}
 .psi-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;color:var(--azul-mid);line-height:1}
-.psi-label{font-size:.68rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
-.psi-div{width:1px;height:2.5rem;background:rgba(255,255,255,.08);margin-right:2.5rem;flex-shrink:0}
+.psi-label{font-size:.68rem;color:var(--cinza);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
+.psi-div{width:1px;height:2.5rem;background:rgba(28,78,221,.18);margin-right:2.5rem;flex-shrink:0}
 
 /* ── contador de resultados ──────────────────────────────────────────────── */
 .pub-result-count{font-size:.8rem;font-weight:500;color:var(--azul);margin-bottom:1.25rem;letter-spacing:.02em;transition:background .2s,color .2s,padding .2s}
@@ -435,13 +439,18 @@ body.nav-open .nav-hamburger span:nth-child(3){transform:translateY(-7px) rotate
 
   section{padding:4rem 1.25rem}
   #inicio{padding:7rem 1.25rem 3rem}
-  .page-hero{padding:6rem 1.25rem 3rem}
-  .premios-stats{gap:0;flex-direction:column;align-items:flex-start}
-  .psi{padding:.6rem 0}
+  .page-hero{padding:5.5rem 1.25rem 2.5rem}
+  /* statsbar horizontal no mobile: 3 colunas iguais */
+  .premios-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:.25rem 0}
+  .psi{padding:.75rem .5rem;text-align:center;border-right:1px solid var(--borda)}
+  .psi:last-of-type{border-right:none}
+  .psi-num{font-size:1.2rem}
   .psi-div{display:none}
   .hero-stats{gap:1.5rem}
   .noticias-all{grid-template-columns:1fr}
-  .premio-grid{grid-template-columns:1fr}
+  .premio-grid{grid-template-columns:1fr;gap:1rem}
+  .premio-card{padding:1.25rem}
+  section[id^="premio-"]{padding-top:2rem;padding-bottom:2rem;padding-left:1.25rem;padding-right:1.25rem}
   .prof-grid{grid-template-columns:1fr}
   .linhas-grid{grid-template-columns:1fr}
   .pub-item{flex-direction:column;gap:.5rem}

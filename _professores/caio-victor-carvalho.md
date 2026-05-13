@@ -1,15 +1,14 @@
 ---
-layout: null
-nome: "Prof. Dr. Caio Victor D. Carvalho"
-cargo: "Professor · EMEVZ/UFBA"
-tipo: "docente"
-avatar: "CC"
-foto: ""
-descricao: "Genética da conservação de animais domésticos."
+nome: Prof. Dr. Caio Victor D. Carvalho
+cargo: Professor · EMEVZ/UFBA
+tipo: docente
+foto: ''
+avatar: CC
+descricao: Genética da conservação de animais domésticos.
 tags:
   - Genética da Conservação
-  - Animais Domésticos
-lattes: ""
-email: ""
+lattes: http://lattes.cnpq.br/4550619240770758
+email: caio.victor@ufba.br
 ordem: 4
+layout: null
 ---
